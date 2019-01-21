@@ -1,0 +1,188 @@
+\chapter{THE ENHANCED STATISTICAL MODELING METHOD} \label{Proposal}
+
+In accordance with the literature, it is well-established that channel modeling of \ac{PLC} channels can be accomplished by using the following approaches:
+
+\begin{itemize}
+\item bottom-up: This approach allows obtaining the \ac{CFR} of \ac{PLC} channels starting from the properties of the components in the electric power grids, such as topology, type of power lines, branches and loads. It clearly describes the existing relationship between the \ac{CFR} of \ac{PLC} channels and the characteristics of constituting components of the electric power grids. Following this approach, \ac{CFR} can be obtained by either using the network matrix formulation \cite{Chen:botu} or the theory of transmission lines that considers the  effects of multiple transmissions and reflections \cite{Anasta:botu}. Both techniques require complete knowledge of electric power grids and their components, which is a very difficult task to be accomplished due to the complexity of electric power grids. In addition, it is important to point out that the characterization of their components may not be easily available and their interactions with other components in such very complex systems may demand an astonishing efforts to be addressed. 
+
+\item top-down: This approach considers the \ac{PLC} channel as a black box and provides the multipath propagation channel model by using an echo model in the time domain \cite{tang:topd}. Also, it can make use of a parametric model in the frequency domain \cite{Zimmermann} with parameters estimated from a data set obtained during measurement campaigns. Based on a data set availability, this kind of channel model can be easily accomplished. Different from the bottom-up approach, the top-down approach is not capable of describing the physics behind the signal propagation through the electric power grids.
+\end{itemize}
+
+It is important to point out that the top-down approach can be applied to perform statistical characterization and modeling of both \ac{PLC} and hybrid \ac{PLC}-\ac{WLC} channels based on  measurement campaign for estimating the \ac{CFR} of the channels, while the bottom-up approach is more easier to be applied to \ac{PLC} channels in comparison to the hybrid \ac{PLC}-\ac{WLC} channels. The use of the bottom-up approach in hybrid \ac{PLC}-\ac{WLC} channels relies on the electromagnetic theory and other aspects related to the air that are not easy to represent mathematically. Based on this discussion and previous works in the literature reporting the usefulness of the top-down approach \cite{topd2007}, this chapter focuses on an statistical modeling of the \ac{PLC} and hybrid \ac{PLC}-\ac{WLC} channels based on the top-down approach.
+
+This chapter proposes a enhanced statistical modeling method to obtain the statistical model of the elements of the \ac{r.v.} $\bf X$, on the frequency band covering the bandwidth between $0$ and $B$~Hz. This enhanced statistical modeling method can be seen as an improved version of the method introduced in \cite{Luis:AI,Luis:doc} for performing the statistical modeling of the access impedances in in-home electric circuit. According to \cite{Luis:AI,Luis:doc}, several polynomials are used to represent the waveforms of the parameters associated with the statistical distribution offering the best modeling of a random vector. A problem found in the statistical modeling method organized in \cite{Luis:AI,Luis:doc} was the edge effects at the boundaries of the intervals chosen to be presented by a unique polynomial when several consecutive frequency bands are taken into account. Due to the characteristic of access impedances in a given frequency band (e.g., $f\in[0,B)$), the statistical modeling method presented in \cite{Luis:AI,Luis:doc} can be easily extended for modeling the \ac{CFR} of \ac{PLC} and hybrid \ac{PLC}-\ac{WLC} channels; however, the edge effects between the polynomials covering consecutive frequency bands needs to be better addressed. 
+
+In order to introduce an enhanced version of the statistical modeling method introduced in \cite{Luis:AI,Luis:doc}, this chapter applies splines to come up with the waveforms that represent the parameters of statistical distribution covering the whole frequency bandwith, e.g., $f\in[0,B)$. Based on \cite{Luis:AI,Luis:doc}, the enhanced statistical modeling method, may be organized into four steps. The first step covers the use of several statistical distribution, which are well-known in the telecommunication field as well as others that fulfill the support of the elements of the \ac{r.v.} $\bf X$. The second step  consists in applying well-established statistical criteria that are capable of informing the statistical distribution offering the best modeling. The third step focuses on a heuristic decision-making approach that choose the statistical distribution offering the best modeling. The last step refers to the use of spline techniques to obtain the waveforms of the parameters associated with the chosen statistical distribution in the frequency domain. 
+
+This chapter is organized as follows: Section \ref{sec:P1} addresses the part of the proposed enhanced statistical modeling method that is responsible for finding the best statistical distribution to model each element of the \ac{r.v.} ${\bf X}$. Section \ref{sec:P2} derives the procedure to interpolate the parameters of the chosen statistical distributions by using the Spline technique. Section \ref{sec:P3} presents a summary about this chapter.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{FINDING THE BEST STATISTICAL DISTRIBUTIONS} \label{sec:P1}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Aiming to address the first two research questions exposed in Chapter \ref{ProblemFormulation}, the statistical models of the magnitude and phase of a \ac{CFR} related to \ac{PLC} and \ac{PLC}-\ac{WLC} channels are devised. In this regard, let us assume that each element of the \ac{r.v.} ${\bf X}\in \{ {\bf |H|},{\bf \Theta} \}$ are independent distributed random variables. In other words, the joint distribution of the \ac{r.v.} ${\bf X}$ is the product of the individual distributions of all elements of this vector. Also, all elements of the \ac{r.v.} ${\bf X}$ are modeled by same the statistical distribution. The only and possible difference are the values of the parameters associated with the statistical distribution applied to model the elements of  the \ac{r.v.} ${\bf X}$. This is an interesting approach to come up with simple statistical models for the \ac{r.v.} ${\bf X}$ that can be useful for performing theoretical analysis related to channel capacity, physical layer security, energy harvesting and cooperative communication, among others.
+
+Based on the aforementioned assumptions, previous discussions and the use of a data set of \ac{CFR} estimates, which were obtained from a measurement campaign, the statistical modeling may be interpreted as the search for statistical distributions offering the best fits to the majority of the elements of ${\bf X}$. As previously stated, it is important to emphasize that all elements of ${\bf X}$ will be modeled with the same statistical distribution; however, with a different set of parameter values. It means that the type of statistical distribution together with its parameters are the modeling information for each element of the \ac{r.v.}  ${\bf X}$. In other words, the model is the chosen statistical distribution together with its parameter values for all elements of ${\bf X}$. Overall, the process of finding the best statistical models for the majority of the elements of the \ac{r.v.} $\bf X$ can be organized in three steps, detailed as follows:
+
+\begin{itemize}
+	\item \textbf{Step \#1}: Assume that the \ac{r.v.} ${\bf X}$ represents ${\bf |H|}$ or ${\bf \Theta}$. In sequel, model all elements of the \ac{r.v.} ${\bf X}$ with each statistical distributions belonging to a set of statistical distributions  that addresses the characteristics of the elements of this  \ac{r.v.}. It is important to highlight that ${\bf |H|} \in \mathbb{R}_{+}^{N\times 1}|0 \leq {  |H_k|} \leq 1$ and ${\bf \Theta \in \mathbb{R}}_{+}^{N \times 1}|0 \leq { \Theta_k} \leq 2\pi$ determine the suitability of a set of statistical distributions for modeling the two types of the \ac{r.v.} ${\bf X}$ (i.e., ${\bf |H|}$ and ${\bf \Theta}$). Given the supports of the elements of the \ac{r.v.} ${\bf X}$ (${\bf |H|}$ or ${\bf \Theta}$), it is clear that only statistical distributions covering positive values may apply.
+	
+	\item \textbf{Step \#2}: Appraise the set of statistical distributions, for each element of the \ac{r.v.} ${\bf X}$ in order to select the best statistical distribution. For decision-making, apply the majority vote rule \cite{vote} in the values obtained by using the four statistical criteria: \ac{MLE}, \ac{AIC}, \ac{BIC}, and \ac{EDC} \cite{Dorea:Sim,Cabral:Multi,Andrei:Meas}. By considering \ac{MLE} criterion, the best statistical modeling is the distribution that achieves the maximum value, whereas for the \ac{AIC}, \ac{BIC}, and \ac{EDC} information criteria, the best modeling is the statistical distribution achieving the minimum value. It is important to emphasize that these criteria are well-established in the statistical literature because they offer quantitative and unbiased comparisons among distinct statistical distributions applied to model the elements of a \ac{r.v.}.
+	
+	\item \textbf{Step \#3}: Find the statistical distribution yielding the best statistical model for the majority of the elements of the \ac{r.v.} ${\bf X}$. It is important to note that the said distribution must achieve a minimum percentage ratio over the best results evaluated on the \ac{MLE} criteria, for the elements in which the distribution is not the best model, to be considered a valid model over the desired frequency band. This statistical distribution is then chosen as the statistical distribution for all elements of the \ac{r.v.} ${\bf X}$. The set of parameters (i.e., $\mathcal{C}_{X_k} = \{ \zeta_{1}[k], ...., \zeta_{U}[k] \}$ ) associated with the chosen statistical distributions for the $k^th$ element of the \ac{r.v.} $\bf X$ is obtained.  
+\end{itemize}
+
+Algorithm \ref{Algo} implements the aforementioned three steps of the enhanced statistical modeling method. 
+
+In order to visualize when an statistical distribution yields the best results in terms of the \ac{MLE} criterion, the log-likelihood ratio expressed as
+\begin{equation}
+\rho_{MLE} [k] \triangleq \dfrac{\max_{\mathcal{A}} MLE(A,k)}{MLE(A,k )},
+\label{eq:log-lik0}
+\end{equation}
+is a useful parameter to be taken into account. Note that $ MLE(A,k)$ is the value of the log-likelihood associated with the statistical distribution ($A$) belonging to the set of the chosen statistical distributions $\mathcal{A}$ at the frequency tone $k$, while $\max_{\mathcal{A}} MLE(\mathcal{A})$ is the value of the log-likelihood related to the statistical distribution yielding the best statistical model. Note that the best results are achieved when $\rho_{MLE} (k) \rightarrow 1$. In addition, considering the continuous-time domain, then the log-likelihood ratio may be represented by 
+\begin{equation}
+\rho_{MLE} (f) \triangleq \dfrac{\max_{\mathcal{A}} MLE(A,f)}{MLE(A,f)}.
+\label{eq:log-lik}
+\end{equation}
+
+
+\begin{algorithm}[h!]
+	\small
+	\hspace{0.1cm}$\bullet$ $\mathbf{M}_{\theta_m} \in \mathbb{R}^{N \times M \times P}$: it is the three-dimensional matrix of $P$ unknown parameters from $M$ distinct probability distributions associated with the elements of the random vector $\bf X$.\\
+	\hspace{0.1cm}$\bullet$ $\mathbf{M}_{H}\in \mathbb{R}^{N \times M}$: it is the MLE matrix associated with the $M$ probability distributions.\\
+	\hspace{0.1cm}$\bullet$ $\mathbf{M}_{A}\in \mathbb{R}^{N \times M}$: it is the AIC matrix associated with the $M$ probability distributions.\\
+	\hspace{0.1cm}$\bullet$ $\mathbf{M}_{B}\in \mathbb{R}^{N \times M}$: it is the BIC matrix associated with the $M$ probability distributions.\\
+	\hspace{0.1cm}$\bullet$ $\mathbf{M}_{E}\in \mathbb{R}^{N \times M}$: it is the EDC matrix associated with the $M$ probability distributions.\\
+	\hspace{0.1cm}$\bullet$ $f(x, \mathbf{\theta}_m)$ : it is a parametric probability density function of a \ac{r.v.} $X=x \in \mathbb{R}$, in which $\mathbf{\theta}_m \in \mathbb{R}^{L \times 1}$ is the $m^{th}$ parameter vector belonging to the matrix $\mathbf{M_{\theta}}$.\\
+	\hspace{0.1cm}$\bullet$ ${\bf v}_{\mathcal{P}^{k*}} \in \mathbb{N}^{N \times 1}$: it is the vector of chosen statistical distribution.\\
+	\hspace{0.1cm}$\bullet$ ${\bf M}_{\theta^{k*}} \in \mathbb{N}^{N \times P}$: it is the matrix of parameters associated with the chosen statistical distribution.\\
+	\textbf{Input:}\\
+	\begin{description}[font=\normalfont, align=left, labelindent=0.2cm] 
+		\item[$\mathbf{M}_{\bf X} \in \mathbb{R}^{N\times L}$, in which ${\bf X}\in \{ {\bf |H|},{\bf \Theta} \}$]: it is the matrix constituted by $L$ distinct $\bf X$ vectors
+		\item[$\mathcal{P}=\{\mathcal{P}_1,\ldots,\mathcal{P}_M\}$]: it is the set of $M$ probability distributions 
+	\end{description}
+	
+	\textbf{Output:}\\
+	\begin{description}[font=\normalfont, align=left, labelindent=0.2cm]
+		\item[$\mathcal{P}^{k*}$] = index of best evaluated distribution for magnitude, based on the chosen criteria
+		\item[$\mathbf{M}_{\theta}\in \mathbb{R}^{U \times N}$] = the matrix of parameters associated with the best probability distributions
+		
+	\end{description}
+	\Begin{
+		\textbf{Select the best distribution to model the \ac{r.v.} $\bf X$ }\\
+		\For{$k = 1$ to $N$} 
+		{	
+			
+			\For{$m = 1$ to $M$} 
+			{
+				\textbf{Step \#1 Obtain the vector $\bf \theta$ for the $m^{th}$ probability distribution belonging to $\mathcal{P}$ yielding the maximum MLE value:}\\ 
+				
+				${M}_{\theta_m}(k, m,:) = \arg\max\limits_{\theta_m}\left(\sum\limits_{l=1}^{L}\ln f\left(\sqrt{{M}_{\bf X}(k,l)},\theta_m\right)\right)$
+				
+				\textbf{Step \#2 Evaluate the MLE, AIC, BIC and EDC}\\
+				
+				${M}_L(k,m) = \sum\limits_{l=1}^{L}\ln f\left(\sqrt{{M}_{\bf X}(k,l)},{M}_{\theta_m}(k, m,:) \right)$\\
+				${M}_A(k,m) = -2{M}_L(k,m) + 2L$\\
+				${M}_B(k,m) = -2{M}_L(k,m) + L\log_{10}N$\\
+				${M}_E(k,m) = -2{M}_L(k,m) + 0.2L\sqrt{N}$\\               
+				
+			}
+			\textbf{Step \#2 Choose the probability distribution based on the majority voting criterion (priority is given to MLE value)}\\ 
+			$[\mathbf{v}_{\mathcal{P}^{k*}}(k), {M}_{\theta^{k*}}(k,:)]$ = majority\_vote$\left({M}_L(k,:), {M}_A(k,:), {M}_B(k,:), {M}_E(k,:)\right)$\\	            
+			
+		}
+		\textbf{Step \#3 Select the statistical distribution with more occurrences}\\
+		$\mathcal{P}^{k*}$ = choose\_most\_frequent( ${\bf v}_{\mathcal{P}^{k*}}$)\\
+		$\mathcal{P}^{k*}$ becomes the chosen statistical distribution to all elements of \ac{r.v.} $\bf X$ \\
+		\textbf{Parameters of the chosen statistical distributions are retrieved}\\
+		\For{$k = 1$ to $N$}
+		{
+			${M}_{\theta}(:,k) = {M}_{\theta_m}(k,\mathcal{P}^{k*},:)$\\
+		}	
+	}
+	\caption{Finding the best statistical distributions of the elements of the random vector ${\bf X}\in \{ {\bf |H|},{\bf \Theta} \}$} 
+	\label{Algo}
+\end{algorithm}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{INTERPOLATING THE PARAMETERS VALUES} \label{sec:P2}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%]
+
+In addition to finding the best statistical distribution that fits the elements of the \ac{r.v.} $\bf X$, it is important to come up with the statistical model of the $H(f)=|H(f)|\exp[j\theta(f) ]$, which is the continuous-time Fourier transform of the impulse responses of \ac{PLC} or hybrid \ac{PLC}-\ac{WLC} channels in the continuous-time domain, $h(t)$, that is supposed to be time-invariant during a time interval shorter than $T_c$.  
+
+To do so, the use of a technique capable of yielding a suitable interpolation with a reduced number of parameters and without presenting edge effects, such as that ones reported in \cite{Luis:AI} is a very convenient solution. The standard interpolation technique based on the digital signal processing theory can be applied to obtain $H(e^{j\omega})|-\infty <\omega < \infty$ from the vector $\bf H$ but it demands a large number of parameters  because all elements of the vector $\bf H$ have to be considered for performing the interpolation \cite{mitra}. Note that $H(e^{j\omega})$  is the discrete-time Fourier transform of the channel impulse response in the discrete-time domain, $h[n]$. At this time, it is important to emphasize that $h(t) \leftrightarrow H(f)=H(j\Omega)|_{\Omega = 2\pi f}$ may be easily obtained from $H(e^{j\omega})$, see \cite{mitra} for details. Based on the fact that the aim is to yield statistical models for the \acp{CFR} of \ac{PLC} and hybrid \ac{PLC}-\ac{WLC} channels, the use of a reduced set of parameters for performing the interpolation is valuable to facilitate the work of other researchers. In this context, the use of the Spline-based interpolation techniques emerges. In fact, this kind of technique can be applied to interpolate the values of the parameters of the statistical distribution chosen for each element of the \ac{r.v.} ${\bf X}$.
+
+Regarding the chosen statistical distribution, we can assume that $\zeta_u (\omega) = F_u(\omega; F_u(0), F_u(2\pi/N), \cdots, F_u(2\pi (N-1)/N)$ in which $\omega \in [0,2\pi)$ and $F_u(2\pi k/N) = \zeta_{u}[k], k=0,1,\cdots,N-1$, represents the waveform associated with the $u$-th parameters belonging to the set $\{\zeta_{u}[0], \zeta_{u}[1], \cdots, \zeta_{u}[N-1] \}$, which are obtained from the chosen statistical distributions of all elements of the \ac{r.v.} $\bf X$. Note that its discrete-frequency representation is given by $\zeta_{u}[k] = F_u(\omega; F_u(0), F_u(2\pi/N), \cdots, F_u(2\pi (N-1)/N)|_{\omega=2\pi k/N}=F_u[k; \zeta_{u}[0], \zeta_{u}[1], \cdots, \zeta_{u}[N-1]],k=0,1,\cdots,N-1$. In this context, this interpolation problem may be solved by finding an approximation polynomial $P_u(\omega)$ for the function $F_u(\omega)$ within the defined class of functions such that it can result in as close as possible values at the points $\omega_k = 2\pi k/N$ (i.e., $F_u(\omega_k)\approx P_u(\omega_k)$) for $k=0,1,\cdots,N-1$. 
+
+The Lagrange Interpolation is the direct solution to obtain $P_u(\omega)$; however, the degree of the interpolating Lagrange polynomial is strictly related to the amount of points (nodes)  $\omega_k = 2\pi k/N$, which makes the problems with high number of input data difficult to solve. Another interpolation technique that could be applied was discussed in \cite{Luis:AI,Luis:doc} but its efficiency may be limited because the edge effects occurrences in the boundaries between two polynomials, which are supposed to interpolate the values of the parameters in two consecutive frequency subbands. 
+According to the literature, the use of Splines is very interesting approach to deal with this interpolating problem. Similar to \cite{Luis:AI,Luis:doc}, the Spline-based interpolation technique divides the frequency band into $L_B \in \mathbb{N}$ nonuniform subbands, individually constructs the interpolating polynomial in the $l$-th subband, $P_{u,l}(\omega),l=1,\cdots,L_B$. In addition, it groups the resulting interpolating polynomials to obtain $P_u(\omega)$. A remarkable characteristic of the Splines is its capacity of avoiding the Runge's phenomenon. 
+
+It is well-known that there are several interpolation techniques based on Splines; however, this contribution makes a choice in favor of the cubic Splines \cite{Spline} once that their characteristics of working with nonuniform frequency subbands, producing smoother curves, interpolating the boundaries of the subbands, and generating a continuous curve over the chosen frequency band are quite interesting for dealing the current problem. 
+
+Based on the aforementioned discussion, the Splines-based interpolation technique is covered by the fourth step of the enhanced statistical modeling method. Essentially, this step consists in the use of the cubic Splines over the parameters values of the chosen statistical distribution for interpolating purpose. A detailed description of the fourth step is as follows:
+
+\begin{itemize}
+	\item \textbf{Step \#4}: Interpolate the parameters in the previous step using the cubic Spline interpolation approximation for obtaining $\mathcal{C}_{\omega} = \{ \zeta_{1}(\omega), ...., \zeta_{U} (\omega)\}$. This procedure consists on dividing the desired frequency band into $L$ subbands delimited by $\omega_{l,\textnormal{lower}}$ and $\omega_{l,\textnormal{upper}}$ bounds, and evaluating a third-degree polynomial that describes the $l^{th}$ subband. Note that all subbands address $\omega \in [0,2\pi)$ and the coefficients of the $l^{th}$ polynomial are obtained for each subband following the procedure discussed in \cite{ENA,CS1}.  
+\end{itemize}
+
+The implementation of the fourth step of the enhanced statistical modeling method is detailed in Algorithm \ref{Algo2}, which is based on \cite{ENA,CS1}.
+
+\begin{algorithm}[h!]
+	\small
+	\hspace{0.1cm}$\bullet$ $l\in \mathbb{N}|l=1, \cdots, L$: it is the labels of the interpolation subbands\\
+	\hspace{0.1cm}$\bullet$ $\omega_{l,\textnormal{lower}} \in \mathbb{R}$: it is the lower bound of the interpolation subband\\
+	\hspace{0.1cm}$\bullet$ $\omega_{l,\textnormal{upper}} \in \mathbb{R}$: it is the upper bound of the interpolation subband\\
+	\hspace{0.1cm}$\bullet$ $P_{u,l}(\omega)=\{a_{u,l}\omega^3+b_{u,l}\omega^2+c_{u,l}\omega+d_{u,l} |a_{u,l}, b_{u,l}, c_{u,l}, d_{u,l}, \omega \in \mathbb{R}, \omega_{l,\textnormal{lower}} \leq \omega \leq \omega_{l,\textnormal{upper}}\}$\\ 
+	\hspace{0.1cm}$\bullet$ $\beta_l(\omega) \in \mathbb{R}$: it is the function of $\omega$ at the $l^{th}$ subband mapped to $[0,1]$\\
+	\hspace{0.1cm}$\bullet$ $m_{l,\textnormal{lower}(\omega)}\in \mathbb{R}$: it is the tangent evaluated at $\omega_{l,\textnormal{lower}}$\\
+	\hspace{0.1cm}$\bullet$ $m_{l,\textnormal{upper}(\omega)} \in \mathbb{R}$: it is the tangent evaluated at $\omega_{l,\textnormal{upper}}$\\
+	
+	
+	\textbf{Input:}\\
+	\begin{description}[font=\normalfont, align=left, labelindent=0.2cm] 
+		\item[$\mathbf{v}\in \mathbb{R}^{(L+1) \times 1}$]: it is  the vector constituted by the bounds of the $L$ interpolation subbands.
+		\item[$\mathbf{M}_{\theta}\in \mathbb{R}^{U \times N}$]: it is the matrix of parameters associated with the best probability distributions.
+	\end{description}
+	\textbf{Output:}\\
+	\begin{description}[font=\normalfont, align=left, labelindent=0.2cm]
+		\item[$\mathbf{M}_P\in \mathbb{R}^{4U \times L}$]: it is the matrix constituted by the coefficients of polynomials $P_{u,l}(\omega)$ fitting the $L$ interpolation subbands. $U$ denotes the number of coefficients.
+		
+	\end{description}
+	
+	\textbf{Step \#4 Perform the interpolation}\\	
+	\Begin{
+		\For{$u = 1$ \textbf{to} $U$}{			
+			\For{$l = 1$ \textbf{to} $L$}{
+				\textbf{lower and upper bounds:}\\
+				$\omega_{l,\textnormal{lower}}=v_l$\\
+				$\omega_{l,\textnormal{upper}}=v_{l+1}$\\
+				\textbf{Mapping $\omega$ to the interval $[0,1]$:}\\
+				$\beta_l(\omega)=\dfrac{\omega-\omega_{l,\textnormal{lower}}}{\omega_{l,\textnormal{upper}}-\omega_{l,\textnormal{lower}}}$\\
+				\textbf{evaluate the tangents $m_{l, \textnormal{lower}}(\omega)$ and $m_{l,\textnormal{upper}}(\omega)$:}\\
+				$m_{l,\textnormal{lower}}(\omega)=\dfrac{1}{2}\left(\dfrac{M_{\theta}(u,\omega_{l,\textnormal{upper}}) - M_{\theta}(u,\omega_{l,\textnormal{lower}})}{\omega_{l,\textnormal{upper}} - \omega_{l,\textnormal{lower}}}\right)$+\\
+				\hspace{1.2cm}$\dfrac{1}{2}\left(\dfrac{M_{\theta}(u,\omega_{l,\textnormal{lower}})-M_{\theta}(u,v_{l-1})}{\omega_{l,\textnormal{lower}} - v_{l-1}} \right)$\\
+				$m_{l,\textnormal{upper}}(\omega)=\dfrac{1}{2}\left(\dfrac{M_{\theta}(u,v_{l+2}) - M_{\theta}(u,\omega_{l,\textnormal{upper}})}{v_{l+2} - \omega_{l,\textnormal{upper}}}\right)$+\\
+				\hspace{1.2cm}$\dfrac{1}{2}\left(\dfrac{M_{\theta}(u,\omega_{l,\textnormal{upper}})-M_{\theta}(u,\omega_{l,\textnormal{lower}})}{\omega_{l,\textnormal{upper}} - \omega_{l,\textnormal{lower}}} \right)$\\ 
+				\textbf{Evaluate the 3rd-order polynomial for the $l$th interpolated subband   $[\omega_{l,\textnormal{lower}},\omega_{l,\textnormal{upper}}]$:}\\
+				$P_{u,l}(\omega)=(2{\beta_{l}(\omega)}^3-3{\beta_{l}(\omega)}^2+1)M_{\theta}(u,\omega_{l,\textnormal{lower}})+$\\
+				$({\beta_{l}(\omega)}^3-2{\beta_{l}(\omega)}^2+{\beta_{l}(\omega)})(\omega_{l,\textnormal{upper}}-\omega_{l,\textnormal{lower}})m_{l,\textnormal{lower}}(\omega)+$\\
+				$(-2{\beta_{l}(\omega)}^3+3{\beta_{l}(\omega)}^2)M_{\theta}(u,\omega_{l,\textnormal{upper}})+$\\
+				$({\beta_{l}(\omega)}^3-{\beta_{l}(\omega)}^2)(\omega_{l,\textnormal{upper}}-\omega_{l,\textnormal{lower}})m_{l,\textnormal{upper}}(\omega)$\\
+				\textbf{Store the Coefficients of $P_{u,l}(\omega)$:}\\
+				$M_{P}(1+4(u-1),l) = a_{u,l}$\\
+				$M_{P}(2+4(u-1),l) = b_{u,l}$\\
+				$M_{P}(3+4(u-1),l) = c_{u,l}$\\
+				$M_{P}(4+4(u-1),l) = d_{u,l}$\\
+			}
+		}	
+	}	
+	\caption{Interpolation procedure to obtain $\alpha_l(\omega), l=1,\cdots,L$} 
+	\label{Algo2}	
+\end{algorithm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{SUMMARY} \label{sec:P3}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This chapter has presented an enhanced statistical modeling method for \ac{CFR} of \ac{PLC} and hybrid \ac{PLC}-\ac{WLC} channels. In addition, the algorithms necessary for implementing it have been detailed.

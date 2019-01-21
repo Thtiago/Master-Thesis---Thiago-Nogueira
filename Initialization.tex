@@ -1,0 +1,179 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Packages.
+\usepackage{lmodern}						
+\usepackage[T1]{fontenc}
+\usepackage[latin1]{inputenc}
+\usepackage{lastpage}			
+\usepackage{indentfirst}		
+\usepackage{color}				
+\usepackage{microtype} 	
+\usepackage[printonlyused]{acronym}
+\usepackage[table]{xcolor}
+%\usepackage[breaklinks=true]{hyperref}
+\usepackage{amsmath,amssymb,amsthm,mathrsfs,amsfonts,dsfont}
+\usepackage{psfrag}
+%\usepackage[boxed,lined,figure]{algorithm2e}
+\usepackage{multirow}
+\usepackage{cite}
+\usepackage{rotating}
+\usepackage{ifpdf}
+\usepackage{pdflscape}
+\usepackage{caption}
+\usepackage{url}
+%\usepackage{subcaption}
+\usepackage{subfig}
+\usepackage{graphicx}
+%\usepackage{xcolor}
+%\usepackage{graphicx,subfigure}
+\usepackage{booktabs}
+\usepackage{textcomp}
+%\usepackage{acronym}
+\usepackage{enumitem}
+\usepackage{array}
+\newcolumntype{C}[1]{>{\centering}m{#1}}
+%\usepackage{amsmath}
+%\usepackage{amssymb}
+\usepackage{color}
+%\usepackage{amsfonts}
+%\usepackage{psfrag}
+\usepackage[justification=centering]{caption}
+\hyphenation{op-tical net-works semi-conduc-tor}
+\usepackage[algoruled]{algorithm2e}
+%\renewcommand{\ss}{\resizebox{4pt}{2pt}{$\square$}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%DADOS THESIS.
+
+\titulo{Statistical Modeling of the Brazilian In-Home Channels: PLC and Cascade of PLC and Wireless}
+\autor{Thiago Fernandes do Amaral Nogueira}
+\autorR{Nogueira, Thiago}
+\local{Juiz de Fora}
+\data{2018}
+\orientador[Orientador:]{Mois\'{e}s Vidal Ribeiro}
+\coorientador[Coorientador:]{Guilherme Ribeiro Colen}
+\instituicao{Universidade Federal de Juiz de Fora}
+\faculdade{Engenharia El\'etrica}
+\programa{Programa de P\'{o}s-Gradua\c{c}\~{a}o em Engenharia El\'{e}trica}
+\objeto{Disserta\c{c}\~{a}o de Mestrado}  %%Tese (Doutorado)
+\natureza{Disserta\c{c}\~{a}o de mestrado apresentada ao \insereprograma~da \insereinstituicao, na \'{a}rea de concentra\c{c}\~{a}o em sistemas eletr\^{o}nicos, como requisito parcial para obten\c{c}\~{a}o do t\'{i}tulo de Mestre em Engenharia El\'{e}trica.}
+% Abaixo, prencher com os dados da parte final da ficha catalográfica.
+\finalcatalog{1. Caracteriza\c{c}\~ao estat\'istica. 2. Comunica\c{c}\~ao h\'ibrida. 3.  Comunica\c{c}\~ao via rede de energia el\'etrica. 4. Comunica\c{c}\~ao sem fio. 5. Metodologia de modelagem. I. Vidal Ribeiro, Mois\'{e}s, orient. II. Ribeiro Colen, Guilherme, coorient. III. T\'{i}tulo.}
+%% Aqui fica escrito a palavra ``T\'itulo'' mesmo, nao o do trabalho. Se tiver coorientador, os dados ficam depois dos dados do orientador (II. Sobrenome, Nome do coorientador, coorient.) e antes de ``II. T\'itulo'', o qual passa a ``III. T\'itulo''.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%NewAcronyms.
+\newacro{HIPERLAN}{high-performance radio local area network}
+\newacro{HSRC}{hybrid single-relay channel}
+\newacro{HOHC}{hybrid one-hop channel}
+\newacro{PLC}{power line communication}
+\newacro{SRC}{single-relay channel}
+\newacro{2S-SRC}{two-stage SRC}
+\newacro{MIMO}{multiple-input multiple-output}
+\newacro{AF}{amplify-and-forward}
+\newacro{DF}{decode-and-forward}
+\newacro{TDMA}{time-division multiple access}
+\newacro{MRC}{maximum ratio combining}
+\newacro{LGRC}{linear Gaussian relay channel}
+\newacro{$N$-CGRC}{$N$-block circular Gaussian relay channel}
+\newacro{OFDM}{orthogonal frequency-division multiplexing}
+\newacro{HS-OFDM}{hermitian-symmetric orthogonal frequency-division multiplexing}
+\newacro{PSD}{power spectral density}
+\newacro{BER}{bit error rate}
+\newacro{nSNR}{normalized signal-to-noise ratio}
+\newacroindefinite{nSNR}{an}{a}
+\newacro{CFR}{channel frequency response}
+\newacro{LTV}{linear time-variant}
+\newacro{LTI}{linear time-invariant}
+\newacroindefinite{LTI}{an}{a}
+\newacro{DFT}{discrete Fourier transform}
+\newacro{AWGN}{additive white Gaussian noise}
+\newacro{SNR}{signal-to-noise ratio}
+\newacroindefinite{SNR}{an}{a}
+\newacro{CIR}{channel impulse responses}
+\newacro{CSI}{channel state information}
+\newacro{LAN}{Local Area Network}
+\newacro{ETSI}{European Telecommunications Standards Institute}
+\newacro{NLOS}{non-line-of-sight}
+\newacro{BRAN}{Broadband Radio Access Networks}
+
+\newacro{ACG}{average channel gain}
+\newacro{CB}{coherence bandwidth}
+\newacro{ACA}{average channel attenuation}
+\newacro{RMS-DS}{root mean squared delay spread}
+\newacro{CT}{coherence time}
+\newacro{DFT}{discrete Fourier transform}
+\newacro{BPSK}{binary phase shift keying}
+\newacro{r.va.}{random variables}
+\newacro{CP}{cyclic prefix}
+\newacro{SFO}{sampling-frequency offset}
+\newacro{MLE}{Maximum Likelihood Estimation}
+\newacro{AIC}{Akaike information criterion}
+\newacro{BIC}{Bayesian information criterion}
+\newacro{EDC}{Efficient determination criterion}
+\newacro{LPTV}{linear periodically time varying}
+\newacro{IFT}{inverse Fourier transform}
+\newacro{r.v.}{random vector}
+\newacro{FM}{frequency modulation}
+\newacro{MSE}{mean squared error}
+\newacro{RMSE}{root-mean-square error}
+\newacro{WLC}{wireless communication} 
+\newacro{IoT}{Internet of Things}
+\newacro{RF}{radio frequency}
+\newacro{SG}{smart grid}
+\newacro{WLAN}{wireless local area network} 
+\newacro{LPWAN}{Low Power Wide Area Networks}
+\newacro{HiperLAN}{High Performance Radio LAN}
+\newacro{UWB}{Ultra-wide-band}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Others.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\parindent}{1.3cm}
+\setlength{\parskip}{0.2cm}  
+\setlength\afterchapskip{12pt}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FIGURES.
+\graphicspath{{./Figs/}}
+\DeclareGraphicsExtensions{.eps}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% NEW THEOREM
+\newtheoremstyle{note}% <name>
+{3pt}% <Space above>
+{3pt}% <Space below>
+{\itshape}% <Body font>
+{}% <Indent amount>
+{\itshape}% <Theorem head font>
+{:}% <Punctuation after theorem head>
+{.5em}% <Space after theorem headi>
+{}% <Theorem head spec (can be left empty, meaning `normal')>
+\theoremstyle{note}
+\newtheorem{defn}{Definition}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\DeclareOldFontCommand{\bf}{\normalfont\bfseries}{\mathbf}
+\DeclareOldFontCommand{\rm}{\normalfont\rmfamily}{\mathrm}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% NEW COMMANDS
+\newcommand{\spacing}{0.6}
+\newcommand{\mat}[1]{\mbox{\boldmath{$#1$}}} 
+
+\newcommand{\M}{{\Large x}}
+\newcommand{\Atv}[1]{\multicolumn{1}{|l|}{Task \##1}}
+\newcommand{\diag}{\mathop{\mathrm{{\bf diag}}}}
+\newcommand{\card}{\mathop{\mathrm{card}}}
+\newcommand{\Tr}{\mathop{\mathrm{Tr}}}
+\newcommand{\Largura}{15cm}
+\newcommand{\Larguraa}{14cm}
+\renewcommand{\a}{a}
+\renewcommand{\b}{b}
+\newcommand{\HS}{\mathop{\text{{\tiny hs}}}}
+\renewcommand{\th}{\mathop{^{th}}}
+
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+\makeatletter% \tiny: 6/7
+\newcommand{\mm}{\@setfontsize\miniscule{5.5}{6.5}}
+\makeatother
+
+\newcommand{\Zdiag}{\mathop{\mathrm{\mathcal{Z}}}}
+\newcommand{\Eq}{\mathop{\mathrm{Eq}}}
+\newcommand{\destacar}[1]{\textcolor{red}{#1}}
+\newcommand{\cor}[1]{\textcolor{red}{#1}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\hyphenation{through-put band-width ti-me--fre-quen-cy}
+\newacro{BRAN}{Broadband Radio Access Networks}
+

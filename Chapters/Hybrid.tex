@@ -1,0 +1,165 @@
+\chapter{HYBRID PLC/WIRELESS CHANNEL MODELS}  \label{Hybrid}
+
+The independent use of electric power grids and wireless media for data communication purpose has been pursued since long time ago. However, the need for maximizing their usage and fulfilling the astonishing and growing demands for connectivity among human beings and machines has brought attention to the drawbacks and limitations of these media. Attempting to address these issues, the investigation of the combined use of electric power grids and wireless media for data communication has started a few years ago. Currently, there is a great deal of attention in the parallel use of \ac{PLC} and wireless channels to provide either reliability or high data rate, which has been called hybrid PLC/wireless data communication. 
+
+There are several works exploring the hybrid PLC/wireless data communication, but this topic may be complicated since the behavior of electric power grids for narrowband (frequency band from $0$ up to $500$~kHz) and broadband (frequency band from $1.7$ up to $100$~MHz) are different in terms of signal propagation and additive noise influence. And the same is applied to the wireless medium. In this regard, \cite{Victor2017,Leo2017,Victor2018} addressed the narrowband hybrid PLC/wireless data communication, while \cite{Lai2012,Sayed2014,Lai2010} discussed general results related to \ac{PLC} and wireless channels models. Moreover, there is a lack of contribution regarding broadband hybrid \ac{PLC}/wireless data communication in the literature. As well as investigations for narrowband hybrid \ac{PLC}/wireless data communication, works related to broadband hybrid \ac{PLC}/wireless data communication are not simple since the scope and coverage must be clearly defined. With respect to only the \ac{PLC} side, it is important to pay attention to the voltage level (low-, medium- and high-voltage), the type of environment, such as indoor (vehicle, residences and building) and outdoor (metropolitan and rural areas), among other issues. Bringing the wireless side to the discussion, other issues have to be addresses, such as the frequency bands and distances between nodes. 
+
+Based on the previous discussion, it is clear the need for correctly defining the frequency bands in which the hybrid \ac{PLC}/wireless data communication is evaluated. In order to analyze the usefulness of the hybrid \ac{PLC}/wireless data communication for broadband applications, this chapter focuses on hybrid channel models regarding a frequency band around to $100$~MHz. Driving the attention to one-hop links, only hybrid channel models in which the direct link is existing are analyzed in this chapter. By considering the frequency selectivity of both \ac{PLC} and wireless channels, \cite{Goldsmith2001, Choudhuri2014} are used to derive the ergodic achievable data rates.
+
+This chapter is organized as follows: Section \ref{sec:ProbForm_HSRC} addresses the problem formulation and outlines the hybrid \ac{PLC}/wireless channel models adopted in this chapter. Section \ref{sec:EADR_HSRC} derives the ergodic achievable data rates for these models and Section \ref{sec:SUM_HSRC} presents a succinct summary about this chapter.
+
+\section{PROBLEM FORMULATION} \label{sec:ProbForm_HSRC}
+
+Two hybrid channel models for data communication purposes are adopted in this chapter (see Fig. \ref{fig:hybrid_models}). The first one does not consider the presence of active relays between $S$ and $D$ nodes and, as a consequence, it is named the \ac{HOHC} model. This channel model was considered in previous works \cite{Victor2016,Lai2012,Sayed2014,Lai2010}. The second one is named the \ac{HSRC} model and assumes that there is a active relay ($R$ node) between $S$ and $D$ nodes, see details in \cite{Victor2017,Victor2018,Leo2017}. In both models, all nodes can perform data communication over electric power grids and wireless media. In this work, the same symbols are transmitted through \ac{PLC} and wireless channels by $S$ and $R$ nodes, which means that these channels are simultaneously accessed and the data communication aims to increase the reliability, coverage, and data rate. Based on the adoption of the \ac{TDMA} method to access the channel, in the \ac{HSRC} model, $S$ node broadcasts the original information to $R$ and $D$ nodes, in the first time slot, while in the second one, $R$ node forwards the information to $D$ node.
+
+\begin{figure}[b]
+	\centering
+	\psfrag{s1}[l][l][0.8]{\color{white} $S$}
+	\psfrag{r1}[l][l][0.8]{\color{white} $R$}
+	\psfrag{d1}[l][l][0.8]{\color{white} $D$}
+	\subfloat[]{\includegraphics[scale=0.7]{HOHC}}\\~\\
+	\subfloat[]{\includegraphics[scale=0.7]{HSRC}}
+	\caption[Adopted hybrid channel models.]{Adopted hybrid channel models. (a)~HOHC model and (b)~HSRC model.}
+	\label{fig:hybrid_models}
+\end{figure}
+
+Let the symbol transmitted by $S$ node, in the frequency domain, be a Gaussian random vector given by $\mathbf{X} \in \mathbb{C}^{N \times 1}$, such that $ \mathbb{E}\{\mathbf{X}\} = \mathbf{0}_{1\times N}  $, $ \mathbf{R}_{\mathbf{X}\mathbf{X}} = \mathbb{E}\{\mathbf{X}\mathbf{X}^\dagger\} = N \mathbf{I}_{N} $. Also, $ T_{C}^{\max} \gg T_{S} $, where $ T_{C}^{\max} $ denotes the maximum coherence time considering both \ac{PLC} and wireless channels and $ T_{S} $ is the symbol time interval (duration). Moreover, both \ac{PLC} and wireless channels are modeled as \ac{LTI} within a symbol time interval and the vectors representing the \ac{CIR} of these channels are expressed as $ \mathbf{h}_{l}^q = [h_{l}^q[1]\ h_{l}^q[2]\ ...\ h_{l}^q[L_{l}^q]]^T $, where $ L_{l}^q $ is the channel length, $ q \in \{p,w\} $ indicates the medium (power line or wireless), and $ l \in \{SD,SR,RD\}$ denotes the links source-destination, source-relay, and relay-destination, respectively. In addition, the $ N\text{-length} $ vector that represents the \ac{CFR} of $ \mathbf{h}_{l}^q $ is $ \mathbf{H}_{l}^q = \mathbf{W}_{N} \  [\mathbf{h}_{l}^q\ \  \mathbf{0}_{1\times N - l}]^T $ and the diagonal matrices $ \mathbf{\Lambda}_{\mathbf{H}_{l}}^q \triangleq \diag \{H_{l}^q[1], H_{l}^q[2],...,H_{l}^q[N]\} $ and $ \mat{\Lambda}_{|\mathbf{H}_{l}|^2}^q \triangleq \diag \{|H_{l}^q[1]|^2, |H_{l}^q[2]|^2,...,|H_{l}^q[N]|^2\} $, in which $ H_{l}^q[k] $ represents the $k$-th element of $ \mathbf{H}_{l}^q $ ($ k = 1,2,...,N $).
+
+Regarding the noise influence, let the additive noise at the output of the channel associated with the $l$ link and $q$ medium be represented by the Gaussian random vector $ \mathbf{V}_{l}^q \in \mathbb{C}^{N \times 1}$, in the frequency domain, such that $ \mathbb{E}\{\mathbf{V}_{l}^q\} = \mathbf{0} $, $ \mathbb{E}\{\mathbf{V}_{l}^q \odot\mathbf{V}_{j}^q \} = \mathbb{E}\{\mathbf{V}_{l}^q\} \odot \mathbb{E}\{\mathbf{V}_{j}^q\} $, $ \forall \  l \neq j $ and $j \in \{SD,SR,RD\}$. Also, $ \mathbb{E}\{\mathbf{V}_{l}^p \odot\mathbf{V}_{j}^w \} = \mathbb{E}\{\mathbf{V}_{l}^p\} \odot \mathbb{E}\{\mathbf{V}_{j}^w\} $, $ \forall j \in \{SD,SR,RD\} $ and $ \mathbb{E}\{\mathbf{V}_{l}^q\mathbf{V}_{l}^q\dagger\} = N \mat{\Lambda}_{P_{\mathbf{V}_{l}^q}}$, in which  $\mat{\Lambda}_{P_{\mathbf{V}_{l}^q}} \triangleq \diag\{P_{\mathbf{V}_{l}^q}[1],P_{\mathbf{V}_{l}^q}[2],...,P_{\mathbf{V}_{l}^q}[N]\} $ and $ P_{\mathbf{V}_{l}^q}[k] $ denotes the power of the $k$-th element of $\mathbf{V}_{l}^q$. Next, let $ P_{S}^q \geq 0 $ and $ P_{R}^q \geq 0  $ be the transmission powers allocated to $S$ and $R$ nodes and $q \in \{p,w\}$ medium, respectively. Similar to Chapter \ref{TwoStagePLC}, the sum power constraint criterion is satisfied as follows:
+
+\begin{equation}
+	\sum_{q} (P_{S}^q + P_{R}^q) \leq P,
+\end{equation}
+in which $P \geq 0$ is the total transmission power. Besides, $ \mat{\Lambda}_{\sqrt{P_{S}^q}} \triangleq \diag\{\sqrt{P_{S}^q[1]},\sqrt{P_{S}^q[2]},...,\sqrt{P_{S}^q[N]}\}$, $ \mat{\Lambda}_{\sqrt{P_{R}^q}} \triangleq \diag\{\sqrt{P_{R}^q[1]},\sqrt{P_{R}^q[2]},...,\sqrt{P_{R}^q[N]}\}$, $ \mat{\Lambda}_{P_{S}^q} \triangleq \diag\{P_{S}^q[1],P_{S}^q[2],...,P_{S}^q[N]\}$, and $ \mat{\Lambda}_{P_{S}^q} \triangleq \diag\{P_{R}^q[1],P_{R}^q[2],...,P_{R}^q[N]\}$, where $ P_{S}^q[k] \geq 0 $ and $ P_{R}^q[k] \geq 0 $ are the power allocated to $k$-th subchannel and $ q $ medium at $S$ and $R$ nodes, respectively.
+
+Based on the aforementioned formulation, the following questions arise: ``Would a hybrid channel model benefit data communication between source and destination nodes when a in-home broadband data communication system is considered?'', ``Which one of the aforementioned hybrid channel models can achieve the highest ergodic achievable data rate when representative \ac{CFR} and additive noise are applied?'' In order to answer these interesting questions, Section~\ref{sec:EADR_HSRC} formulates ergodic achievable data rate expressions for these models.
+
+\section{ERGODIC ACHIEVABLE DATA RATE}  \label{sec:EADR_HSRC}
+
+This section aims to present the ergodic achievable data rate expressions for the adopted hybrid channel models. Such expressions will address the lack of combination as well as its presence at the destination node. The adopted roadmap aims to show the difference between both approaches when hybrid channel models are addressed. Regarding the \ac{HSRC} model, the relay node adopts \ac{AF} protocol and \ac{MRC} technique to combine the received signals at the output of the \ac{PLC} and wireless channels and the destination node also applies \ac{MRC} technique for this purpose. This chapter only addresses the use of the \ac{AF} protocol and the \ac{MRC} technique because the former is quite considered as the typical cooperative protocol to be analyzed and the latter yields the optimal performance in terms of signal combining. Moreover, the additive noise is a circularly-symmetric Gaussian random vector. Note that the additive noise is white in the wireless side while it is colored in the \ac{PLC} side.
+
+Furthermore, similar to Chapter \ref{TwoStagePLC} and \cite{Victor2017,Victor2018,Leo2017}, the use of \ac{LGRC} \cite{Goldsmith2001,Choudhuri2014} is taken into account to deal with the inter-block interference created by \ac{PLC} colored noise. Based on the fact that the adopted hybrid channel models have finite memory $ L_{\text{max}} $, in which $ L_{\text{max}} \geq \max\limits_{l,q} \{L_{l}^q\}$ and $ N \rightarrow \infty $, the achievable data rate of the adopted models can be approximated to that of \ac{$N$-CGRC}. 
+
+\subsection{\textbf{Hybrid One-Hop Channel Model}}\label{subsec:hohc}
+
+First of all, let $ \mathbf{Y}^{p} $ and $ \mathbf{Y}^{w} $ be complex random vectors that represent the received signals at $D$ node through power line and wireless media, respectively. Thus, the complex random vector that models the received symbol by $D$ node is given by
+
+\begin{eqnarray} \label{Yl_hcm}
+	\mathbf{Y'} & = & \begin{bmatrix} \mathbf{Y}^{p} \\ \mathbf{Y}^{w} \end{bmatrix} \nonumber\\
+	& = & \begin{bmatrix} \mat{\Lambda}_{\sqrt{P_{S}^{p}}} \mat{\Lambda}_{\mathbf{H}_{SD}^p} \mathbf{X}+ \mathbf{V}_{SD}^{p} \\ \mat{\Lambda}_{\sqrt{P_{S}^{w}}} \mat{\Lambda}_{\mathbf{H}_{SD}^w} \mathbf{X}+ \mathbf{V}_{SD}^{w} \end{bmatrix} \nonumber\\
+	& = & \begin{bmatrix} \mat{\Lambda}_{\sqrt{P_{S}^{p}}} \mat{\Lambda}_{\mathbf{H}_{SD}^p} & \mathbf{0}_{N \times N} \\ \mathbf{0}_{N \times N} & \mat{\Lambda}_{\sqrt{P_{S}^{w}}} \mat{\Lambda}_{\mathbf{H}_{SD}^w} \end{bmatrix} \begin{bmatrix} \mathbf{X} \\ \mathbf{X} \end{bmatrix} + \begin{bmatrix} \mathbf{V}_{SD}^{p} \\ \mathbf{V}_{SD}^{w} \end{bmatrix}\nonumber\\
+	& = &  \mathbf{A'_1} \mathbf{X'_1} + \mathbf{V'_1},
+\end{eqnarray}
+in which
+\begin{equation}
+	\mathbf{A'_1} = \begin{bmatrix} \mat{\Lambda}_{\sqrt{P_{S}^{p}}} \mat{\Lambda}_{\mathbf{H}_{SD}^p} & \mathbf{0}_{N \times N} \\ \mathbf{0}_{N \times N} & \mat{\Lambda}_{\sqrt{P_{S}^{w}}} \mat{\Lambda}_{\mathbf{H}_{SD}^w} \end{bmatrix},
+\end{equation}
+$ \mathbf{V'_1} = [\mathbf{V}_{SD}^{p} \ \mathbf{V}_{SD}^{w}]^T $, and $ \mathbf{X'_1} = [\mathbf{X} \ \mathbf{X}]^T $.
+
+\textit{Without Combination:} Now, the resulting \ac{SNR} matrix, without $D$ node applying the combining technique, is expressed as
+
+\begin{eqnarray}
+	\mat{\Lambda}_{\gamma_{HOHC}}^{w/o} & = & \mathbb{E}\{\mathbf{A'_1}\mathbf{X'_1}(\mathbf{A'_1}\mathbf{X'_1})^\dagger\}(\mathbb{E}\{\mathbf{V'_1}\mathbf{V'_1}^\dagger\})^{-1} \nonumber\\
+	& = & \mathbf{A'_1} \mathbf{R}_{\mathbf{X'_1}\mathbf{X'_1}} \mathbf{A'_1}^\dagger (\mathbf{R}_{\mathbf{V'_1}\mathbf{V'_1}})^{-1} \nonumber\\
+	& = & \begin{bmatrix} \mat{\Lambda}_{P_{S}^{p}} \mathbf{\Lambda}_{|\mathbf{H}_{SD}^p|^2} & \mathbf{0}_{N \times N} \\ \mathbf{0}_{N \times N} & \mat{\Lambda}_{P_{S}^{w}} \mathbf{\Lambda}_{|\mathbf{H}_{SD}^w|^2} \end{bmatrix}
+	\begin{bmatrix} \mat{\Lambda}_{P_{\mathbf{V}_{SD}^p}} & \mathbf{0}_{N \times N} \\ \mathbf{0}_{N \times N} & \mat{\Lambda}_{P_{\mathbf{V}_{SD}^w}} \end{bmatrix}^{-1}  \nonumber\\
+	& = & \begin{bmatrix} \frac{\mat{\Lambda}_{P_{S}^{p}} \mathbf{\Lambda}_{|\mathbf{H}_{SD}^p|^2}} {\mat{\Lambda}_{P_{\mathbf{V}_{SD}^p}}} & \mathbf{0}_{N \times N} \\ \mathbf{0}_{N \times N} & \frac{\mat{\Lambda}_{P_{S}^{w}} \mathbf{\Lambda}_{|\mathbf{H}_{SD}^w|^2}} {\mat{\Lambda}_{P_{\mathbf{V}_{SD}^w}}} \end{bmatrix}.
+\end{eqnarray}
+Note that the resulting \ac{SNR} matrix is block diagonal and, as a consequence, it is composed of the \ac{SNR} matrix of both media in the main diagonal. Therefore, the ergodic achievable data rate for the \ac{HOHC} model is given by
+\begin{equation}
+	C_{HOHC}^{w/o} = \mathbb{E}_{ \mat{\mathbf{H}}} \left\{\max_{\mat{\Lambda}_{P_{S}^{q}}} \dfrac{B_{w}}{N \, N_{T}} \log_{2} [\text{det}(\mathbf{I}_{2N}+ \mat{\Lambda}_{\gamma_{HOHC}}^{w/o} )]\right\},
+\end{equation}
+subject to $ \sum\limits_{q} \text{Tr}(\mat{\Lambda}_{P_{S}^{q}}) \leq P $, with $q \in \{p,w\}$ and $ N_{T} = 1 $.
+
+\textit{With Combination:} From $\mathbf{Y'}$, given by (\ref{Yl_hcm}), and weight matrices, $ \mathbf{D}_{SD}^q $, the complex random vector that models the received symbol at $D$ node in the frequency domain and after the use of the combining technique is given by
+\begin{eqnarray}
+	\mathbf{Y} & = &  \begin{bmatrix} \mathbf{D}_{SD}^{p} & \mathbf{D}_{SD}^{w} \end{bmatrix} \mathbf{Y'} \nonumber\\
+	& = &  \mathbf{D}_{SD}^{p} \mathbf{Y}^{p}  + \mathbf{D}_{SD}^{w} \mathbf{Y}^{w} \nonumber\\
+	& = &  (\mathbf{D}_{SD}^{p} \mat{\Lambda}_{\sqrt{P_{S}^{p}}} \mat{\Lambda}_{\mathbf{H}_{SD}^p} + \mathbf{D}_{SD}^{w} \mat{\Lambda}_{\sqrt{P_{S}^{w}}} \mat{\Lambda}_{\mathbf{H}_{SD}^w}) \mathbf{X}+ (\mathbf{D}_{SD}^{p} \mathbf{V}_{SD}^{p} + \mathbf{D}_{SD}^{w} \mathbf{V}_{SD}^{w})\nonumber\\
+& = &  \mathbf{A_1} \mathbf{X}+ \mathbf{V_1},
+\end{eqnarray}
+where $ \mathbf{A_1} = \mathbf{D}_{SD}^{p} \mat{\Lambda}_{\sqrt{P_{S}^{p}}} \mat{\Lambda}_{\mathbf{H}_{SD}^p} + \mathbf{D}_{SD}^{w} \mat{\Lambda}_{\sqrt{P_{S}^{w}}} \mat{\Lambda}_{\mathbf{H}_{SD}^w} $ and $ \mathbf{V_1} = \mathbf{D}_{SD}^{p}\mathbf{V}_{SD}^{p} + \mathbf{D}_{SD}^{w} \mathbf{V}_{SD}^{w} $. As a consequence, the resulting \ac{SNR} matrix after the use of the combining technique is given by
+\begin{eqnarray}
+	\mat{\Lambda}_{\gamma_{HOHC}}^{w/} & = & \mathbb{E}\{\mathbf{A_1}\mathbf{X}(\mathbf{A_1}\mathbf{X})^\dagger\}(\mathbb{E}\{\mathbf{V_1}\mathbf{V_1}^\dagger\})^{-1} \nonumber\\
+	& = & \mathbf{A_1} \mathbf{R}_{\mathbf{X}\mathbf{X}} \mathbf{A_1}^\dagger (\mathbf{R}_{\mathbf{V_1}\mathbf{V_1}})^{-1} \nonumber\\
+	& = & \frac{|\mathbf{D}_{SD}^{p} \mat{\Lambda}_{\sqrt{P_{S}^{p}}} \mat{\Lambda}_{\mathbf{H}_{SD}^p} + \mathbf{D}_{SD}^{w} \mat{\Lambda}_{\sqrt{P_{S}^{w}}} \mat{\Lambda}_{\mathbf{H}_{SD}^w}|^2}
+{|\mathbf{D}_{SD}^{p}|^2 \mat{\Lambda}_{P_{\mathbf{V}_{SD}^p}} + |\mathbf{D}_{SD}^{w}|^2 \mat{\Lambda}_{P_{\mathbf{V}_{SD}^w}}}.
+\end{eqnarray}
+Assuming that the combining technique is \ac{MRC} means that $\mathbf{D}_{SD}^q = \mat{\Lambda}_{\sqrt{P_{S}^{q}}} \mat{\Lambda}_{\mathbf{H}_{SD}^{q \dagger}} / \mat{\Lambda}_{P_{\mathbf{V}_{SD}^q}} $ and, as a consequence, the \ac{SNR} matrix for the \ac{HOHC} model is given by
+
+\begin{equation}
+	\mat{\Lambda}_{\gamma_{HOHC}}^{w/} = \frac{\mat{\Lambda}_{P_{S}^{p}} \mat{\Lambda}_{|\mathbf{H}_{SD}^p|^2}} {\mat{\Lambda}_{P_{\mathbf{V}_{SD}^p}}} + \frac{\mat{\Lambda}_{P_{S}^{w}} \mat{\Lambda}_{|\mathbf{H}_{SD}^w|^2}} { \mat{\Lambda}_{P_{\mathbf{V}_{SD}^w}}},
+\end{equation}
+which is the weighted sum of the \ac{SNR} matrices associated with both media. As a result, the ergodic achievable data rate for the \ac{HOHC} model with \ac{MRC} is given by
+\begin{equation}
+	C_{HOHC}^{w/} = \mathbb{E}_{ \mat{\mathbf{H}}} \left\{\max_{\mat{\Lambda}_{P_{S}^{q}}} \dfrac{B_{w}}{N \, N_{T}} \log_{2} [\text{det}(\mathbf{I}_{N}+ \mat{\Lambda}_{\gamma_{HOHC}}^{w/} )]\right\},
+\end{equation}
+subject to $ \sum\limits_{q} \text{Tr}(\mat{\Lambda}_{P_{S}^{q}}) \leq P $, with $q \in \{p,w\}$ and $ N_{T} = 1 $.
+
+\subsection{\textbf{Hybrid Single-Relay Channel Model}}\label{subsec:hsrc}
+
+In this hybrid channel model, $S$ and $R$ nodes sends their information through both \ac{PLC} and wireless channels. Therefore, in order to obtain the \ac{SNR} matrix with and without combination, the vectorial representation of the four signals received by $D$ node must be found. Two of them are originated in $S$ node and described in Section \ref{subsec:hohc}, see (\ref{Yl_hcm}), while the others came from $R$ node. 
+
+For describing the signals originated in $R$ node, it is needed to use the random vector $ \mathbf{Y}_{R}^q = \mat{\Lambda}_{\sqrt{P_{S}^q}} \mathbf{\Lambda}_{\mathbf{H}_{SR}^q} \mathbf{X} + \mathbf{V}_{SR}^q $ that represents the symbol received by $R$ node during the first time slot and through the $q$ medium. Thus, with the possession of weight matrices $ \mathbf{D}_{SR}^{p} $ and $ \mathbf{D}_{SR}^{w} $, which are derived by the adoption of the \ac{MRC} technique, the vector that represents the symbol at $R$ node after the use of the combining technique is expressed as
+
+\begin{eqnarray}
+\mathbf{Y}_{R} & = &  \begin{bmatrix} \mathbf{D}_{SR}^{p} & \mathbf{D}_{SR}^{w} \end{bmatrix} \begin{bmatrix} \mathbf{Y}_{R}^p \\ \mathbf{Y}_{R}^w \end{bmatrix} \nonumber\\
+& = &  (\mathbf{D}_{SR}^{p}\mat{\Lambda}_{\sqrt{P_{S}^{p}}} \mat{\Lambda}_{\mathbf{H}_{SR}^p} + \mathbf{D}_{SR}^{w}\mat{\Lambda}_{\sqrt{P_{S}^{w}}} \mat{\Lambda}_{\mathbf{H}_{SR}^w}) \mathbf{X}+ (\mathbf{D}_{SR}^{p}\mathbf{V}_{SR}^{p} + \mathbf{D}_{SR}^{w} \mathbf{V}_{SR}^{w}) \nonumber\\
+& = &  \mathbf{A'_2} \mathbf{X}+ \mathbf{V'_2},
+\end{eqnarray}
+where $ \mathbf{A'_2} = \mathbf{D}_{SR}^{p}\mat{\Lambda}_{\sqrt{P_{S}^{p}}} \mat{\Lambda}_{\mathbf{H}_{SR}^p} + \mathbf{D}_{SR}^{w}\mat{\Lambda}_{\sqrt{P_{S}^{w}}} \mat{\Lambda}_{\mathbf{H}_{SR}^w} $ and $ \mathbf{V'_2} = \mathbf{D}_{SR}^{p}\mathbf{V}_{SR}^{p} + \mathbf{D}_{SR}^{w} \mathbf{V}_{SR}^{w} $. 
+
+In the sequel, the transmitted symbol from $R$ node to $D$ node is represented by $ \mathbf{X}_{R} = \mat{\Lambda}_{P_{\mathbf{Y}_{R}}}^{-1/2} \mathbf{Y}_{R} $, in which $\mat{\Lambda}_{P_{\mathbf{Y}_{R}}} = \mathbb{E}\{\mathbf{Y}_{R} \mathbf{Y}_{R}^\dagger\}/N $ due to the adoption of the \ac{AF} protocol. Hence, the received symbols by $D$ node that was originated in $R$ node are given by
+
+\begin{eqnarray}
+\begin{bmatrix} \mathbf{Y}^{p} \\ \mathbf{Y}^{w} \end{bmatrix} & = & \begin{bmatrix} \mat{\Lambda}_{\sqrt{P_{R}^{p}}} \mat{\Lambda}_{\mathbf{H}_{RD}^p} \mathbf{X}_{R} + \mathbf{V}_{RD}^{p} \\ \mat{\Lambda}_{\sqrt{P_{R}^{w}}} \mat{\Lambda}_{\mathbf{H}_{RD}^w} \mathbf{X}_{R} + \mathbf{V}_{RD}^{w} \end{bmatrix} \nonumber\\
+& = & \begin{bmatrix} \mat{\Lambda}_{\sqrt{P_{R}^{p}}} \mat{\Lambda}_{\mathbf{H}_{RD}^p} [\mat{\Lambda}_{P_{\mathbf{Y}_{R}}}^{-1/2} (\mathbf{A'_2} \mathbf{X} + \mathbf{V'_2})] + \mathbf{V}_{RD}^{p} \\ \mat{\Lambda}_{\sqrt{P_{R}^{w}}} \mat{\Lambda}_{\mathbf{H}_{RD}^w} [\mat{\Lambda}_{P_{\mathbf{Y}_{R}}}^{-1/2} (\mathbf{A'_2} \mathbf{X} + \mathbf{V'_2})] + \mathbf{V}_{RD}^{w} \end{bmatrix} \nonumber\\
+& = & \begin{bmatrix} \mat{\Lambda}_{\sqrt{P_{R}^{p}}} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}}^{-1/2} \mat{\Lambda}_{\mathbf{H}_{RD}^p} \mathbf{A'_2} & \mathbf{0}_{N \times N} \\ \mathbf{0}_{N \times N} & \mat{\Lambda}_{\sqrt{P_{R}^{w}}} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}}^{-1/2} \mat{\Lambda}_{\mathbf{H}_{RD}^w} \mathbf{A'_2} \end{bmatrix} \begin{bmatrix} \mathbf{X} \\ \mathbf{X} \end{bmatrix} + \nonumber\\
+&  & \begin{bmatrix} \mat{\Lambda}_{\sqrt{P_{R}^{p}}} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}}^{-1/2} \mat{\Lambda}_{\mathbf{H}_{RD}^p} \mathbf{V'_2} + \mathbf{V}_{RD}^{p} \\ \mat{\Lambda}_{\sqrt{P_{R}^{w}}} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}}^{-1/2} \mat{\Lambda}_{\mathbf{H}_{RD}^w} \mathbf{V'_2} + \mathbf{V}_{RD}^{w} \end{bmatrix}.
+\end{eqnarray}
+
+As a result, the received symbol at $D$ node considering the \ac{HSRC} model is
+\begin{eqnarray}
+\mathbf{Y'} & = & \begin{bmatrix} \mat{\Lambda}_{\sqrt{P_{S}^{p}}} \mat{\Lambda}_{\mathbf{H}_{SD}^p} & \mathbf{0}_{N \times N} & \mathbf{0}_{N \times N} & \mathbf{0}_{N \times N} \\ \mathbf{0}_{N \times N} & \mat{\Lambda}_{\sqrt{P_{R}^{p}}} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}}^{-1/2} \mat{\Lambda}_{\mathbf{H}_{RD}^p} \mathbf{A'_2} & \mathbf{0}_{N \times N} & \mathbf{0}_{N \times N} \\ \mathbf{0}_{N \times N} & \mathbf{0}_{N \times N} & \mat{\Lambda}_{\sqrt{P_{S}^{w}}} \mat{\Lambda}_{\mathbf{H}_{SD}^w} & \mathbf{0}_{N \times N} \\ \mathbf{0}_{N \times N} & \mathbf{0}_{N \times N} & \mathbf{0}_{N \times N} & \mat{\Lambda}_{\sqrt{P_{R}^{w}}} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}}^{-1/2} \mat{\Lambda}_{\mathbf{H}_{RD}^w} \mathbf{A'_2} \end{bmatrix} \mathbf{X_2} + \nonumber\\
+& + & \begin{bmatrix} \mathbf{V}_{SD}^p \\ \mat{\Lambda}_{\sqrt{P_{R}^{p}}} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}}^{-1/2} \mat{\Lambda}_{\mathbf{H}_{RD}^p} \mathbf{V'_2} + \mathbf{V}_{RD}^{p} \\ \mathbf{V}_{SD}^w \\ \mat{\Lambda}_{\sqrt{P_{R}^{w}}} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}}^{-1/2} \mat{\Lambda}_{\mathbf{H}_{RD}^w} \mathbf{V'_2} + \mathbf{V}_{RD}^{w} \end{bmatrix} \nonumber\\
+& = & \mathbf{A_2} \mathbf{X_2} + \mathbf{V_2},
+\end{eqnarray}
+in which
+\begin{equation}
+\mathbf{A_2} = \begin{bmatrix} \mat{\Lambda}_{\sqrt{P_{S}^{p}}} \mat{\Lambda}_{\mathbf{H}_{SD}^p} & \mathbf{0}_{N \times N} & \mathbf{0}_{N \times N} & \mathbf{0}_{N \times N} \\ \mathbf{0}_{N \times N} & \mat{\Lambda}_{\sqrt{P_{R}^{p}}} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}}^{-1/2} \mat{\Lambda}_{\mathbf{H}_{RD}^p} \mathbf{A'_2} & \mathbf{0}_{N \times N} & \mathbf{0}_{N \times N} \\ \mathbf{0}_{N \times N} & \mathbf{0}_{N \times N} & \mat{\Lambda}_{\sqrt{P_{S}^{w}}} \mat{\Lambda}_{\mathbf{H}_{SD}^w} & \mathbf{0}_{N \times N} \\ \mathbf{0}_{N \times N} & \mathbf{0}_{N \times N} & \mathbf{0}_{N \times N} & \mat{\Lambda}_{\sqrt{P_{R}^{w}}} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}}^{-1/2} \mat{\Lambda}_{\mathbf{H}_{RD}^w} \mathbf{A'_2} \end{bmatrix},
+\end{equation}
+\begin{equation}
+\mathbf{V_2} = \begin{bmatrix} \mathbf{V}_{SD}^p \\ \mat{\Lambda}_{\sqrt{P_{R}^{p}}} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}}^{-1/2} \mat{\Lambda}_{\mathbf{H}_{RD}^p} \mathbf{V'_2} + \mathbf{V}_{RD}^{p} \\ \mathbf{V}_{SD}^w \\ \mat{\Lambda}_{\sqrt{P_{R}^{w}}} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}}^{-1/2} \mat{\Lambda}_{\mathbf{H}_{RD}^w} \mathbf{V'_2} + \mathbf{V}_{RD}^{w} \end{bmatrix},
+\end{equation}
+and $ \mathbf{X_2} = [\mathbf{X} \ \mathbf{X} \ \mathbf{X} \ \mathbf{X}]^T $.
+
+\textit{Without Combination}: Once more, the \ac{SNR} matrix of the received symbol without combination must be found, see (\ref{SNRhsrc}). Then, the ergodic achievable data rate for the \ac{HSRC} model without combination is given by
+\begin{equation}
+	C_{HSRC}^{w/o} = \mathbb{E}_{ \mat{\mathbf{H}}} \left\{\max_{\mat{\Lambda}_{P_{i}^{q}}} \dfrac{B_{w}}{N \, N_{T}} \log_{2} [\text{det}(\mathbf{I}_{4N} + \mat{\Lambda}_{\gamma_{HSRC}}^{w/o} )]\right\},
+\end{equation}
+subject to $ \sum\limits_{i,q} \ \text{Tr}(\mat{\Lambda}_{P_{i}^{q}}) \leq P $, with $i \in \{S,R\}$, $q \in \{p,w\}$, and $ N_{T} = 2 $.
+
+\textit{With Combination}: As in \ac{HOHC} model, the \ac{SNR} matrix for the \ac{HSRC} model with combination, assuming that \ac{MRC} is used, is equal to the sum of $q$ media \ac{SNR} matrices, see (\ref{SNRhsrcC}). Therefore, the ergodic achievable data rate for the \ac{HSRC} model after $D$ node performs signal combining is given by
+\begin{equation}
+C_{HSRC}^{w/} = \mathbb{E}_{ \mat{\mathbf{H}}} \left\{\max_{\mat{\Lambda}_{P_{i}^{q}}} \dfrac{B_{w}}{N \, N_{T}} \log_{2} [\text{det}(\mathbf{I}_{N} + \mat{\Lambda}_{\gamma_{HSRC}}^{w/} )]\right\},
+\end{equation}
+subject to $ \sum\limits_{i,q} \ \text{Tr}(\mat{\Lambda}_{P_{i}^{q}}) \leq P $, with $i \in \{S,R\}$, $q \in \{p,w\}$, and $ N_{T} = 2 $.
+
+\section{SUMMARY}  \label{sec:SUM_HSRC}
+
+This chapter has concentrated on the \ac{HSRC} and \ac{HOHC} models. In this regard, it has presented the problem formulation related to these hybrid channel models and their ergodic achievable data rate expressions when the \ac{AF} protocol applies together with or without signal combining at the destination node. 
+
+\begin{landscape}
+
+\begin{eqnarray}\label{SNRhsrc}
+\mat{\Lambda}_{\gamma_{HSRC}}^{w/o} & = & \mathbb{E}\{\mathbf{A_2}\mathbf{X_2}(\mathbf{A_2}\mathbf{X_2})^\dagger\}(\mathbb{E}\{\mathbf{V_2}\mathbf{V_2}^\dagger\})^{-1} \nonumber\\
+& = & \mathbf{A_2} \mathbf{R}_{\mathbf{X_2}\mathbf{X_2}} \mathbf{A_2}^\dagger (\mathbf{R}_{\mathbf{V_2}\mathbf{V_2}})^{-1} \nonumber\\
+& = & \begin{bmatrix}  \frac{\mat{\Lambda}_{P_{S}^{p}} \mathbf{\Lambda}_{|\mathbf{H}_{SD}^p|^2}} {\mat{\Lambda}_{P_{\mathbf{V}_{SD}^p}}} & \mathbf{0}_{N \times N} & \mathbf{0}_{N \times N} & \mathbf{0}_{N \times N} \\ \mathbf{0}_{N \times N} & \frac{\mat{\Lambda}_{P_{R}^p} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}} \mat{\Lambda}_{|\mathbf{H}_{RD}^p|^2} |\mathbf{A'_2}|^2}{\mat{\Lambda}_{P_{R}^{p}} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}} \mat{\Lambda}_{|\mathbf{H}_{RD}^p|^2} \mat{\Lambda}_{P_{\mathbf{V'}_2}} + \mat{\Lambda}_{P_{\mathbf{V}_{RD}^p}}} & \mathbf{0}_{N \times N} & \mathbf{0}_{N \times N} \\ \mathbf{0}_{N \times N} & \mathbf{0}_{N \times N} & \frac{\mat{\Lambda}_{P_{S}^{w}} \mathbf{\Lambda}_{|\mathbf{H}_{SD}^w|^2}} {\mat{\Lambda}_{P_{\mathbf{V}_{SD}^w}}} & \mathbf{0}_{N \times N} \\ \mathbf{0}_{N \times N} & \mathbf{0}_{N \times N} & \mathbf{0}_{N \times N} & \frac{\mat{\Lambda}_{P_{R}^w} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}} \mat{\Lambda}_{|\mathbf{H}_{RD}^w|^2} |\mathbf{A'_2}|^2}{\mat{\Lambda}_{P_{R}^{w}} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}} \mat{\Lambda}_{|\mathbf{H}_{RD}^w|^2} \mat{\Lambda}_{P_{\mathbf{V'}_2}} + \mat{\Lambda}_{P_{\mathbf{V}_{RD}^w}}} \end{bmatrix}
+\end{eqnarray}
+where $ \mat{\Lambda}_{P_{\mathbf{V'}_2}} = |\mathbf{D}_{SR}^{p}|^2 \mat{\Lambda}_{P_{\mathbf{V}_{SR}^p}} + |\mathbf{D}_{SR}^{w}|^2 \mat{\Lambda}_{P_{\mathbf{V}_{SR}^w}} $.
+
+\begin{equation}\label{SNRhsrcC}
+\mat{\Lambda}_{\gamma_{HSRC}}^{w/} = \frac{\mat{\Lambda}_{P_{S}^{p}} \mathbf{\Lambda}_{|\mathbf{H}_{SD}^p|^2}} {\mat{\Lambda}_{P_{\mathbf{V}_{SD}^p}}} + \frac{\mat{\Lambda}_{P_{R}^p} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}} \mat{\Lambda}_{|\mathbf{H}_{RD}^p|^2} |\mathbf{A'_2}|^2}{\mat{\Lambda}_{P_{R}^{p}} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}} \mat{\Lambda}_{|\mathbf{H}_{RD}^p|^2} \mat{\Lambda}_{P_{\mathbf{V'}_2}} + \mat{\Lambda}_{P_{\mathbf{V}_{RD}^p}}} + \frac{\mat{\Lambda}_{P_{S}^{w}} \mathbf{\Lambda}_{|\mathbf{H}_{SD}^w|^2}} {\mat{\Lambda}_{P_{\mathbf{V}_{SD}^w}}} + \frac{\mat{\Lambda}_{P_{R}^w} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}} \mat{\Lambda}_{|\mathbf{H}_{RD}^w|^2} |\mathbf{A'_2}|^2}{\mat{\Lambda}_{P_{R}^{w}} \mat{\Lambda}_{P_{\mathbf{Y}_{R}}} \mat{\Lambda}_{|\mathbf{H}_{RD}^w|^2} \mat{\Lambda}_{P_{\mathbf{V'}_2}} + \mat{\Lambda}_{P_{\mathbf{V}_{RD}^w}}}.
+\end{equation}
+
+\end{landscape}

@@ -1,0 +1,241 @@
+\begin{folhadeaprovacao}
+	
+	\begin{center}
+		{\chapterfont \bfseries \insereautor}
+		
+		\vfill
+		\begin{center}
+			{\chapterfont\bfseries\inseretitulo \inseresubtitulo}
+		\end{center}
+		\vfill
+		
+		\hspace{.45\textwidth}
+		\begin{minipage}{.5\textwidth}
+			\inserenatureza
+		\end{minipage}
+		\vfill
+	\end{center}
+	
+	Aprovada em:
+	
+	\begin{center} BANCA EXAMINADORA \end{center}
+	\assinatura{Professor Dr. Mois\'es Vidal Ribeiro \ - Orientador \\ Universidade Federal de Juiz de Fora} 
+	\assinatura{Professor Dr. Guilherme Ribeiro Colen \\ Centro de Instru\c{c}\~ao Almirante Wandenkolk}
+	\assinatura{Professor Dr. Gustavo Fraidenraich \\ Universidade Estadual de Campinas}
+	\assinatura{Professor Dr. Augusto Santiago Cerqueira \\ Universidade Federal de Juiz de Fora}
+\end{folhadeaprovacao}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Dedication.
+ \renewcommand*\dedicatorianame{\textbf{DEDICATION}}
+ \begin{dedicatoria} \vspace*{\fill} \centering \noindent
+ 	\textit{Dedico este trabalho aos meus pais Jos{\'{e}} Joaquim e Margarida, minha namorada La{\'{i}}s e ao meu filho Heitor.} 
+ 	\vspace*{\fill}
+ \end{dedicatoria}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Acknowledgment.
+\begin{agradecimentos}[\textbf{ACKNOWLEDGEMENTS}]
+	
+   Agrade\c{c}o a Deus por me guiar e me rodear de pessoas maravilhosas desde o primeiro momento de minha vida.
+
+   Aos meus pais Jos{\'{e}} Joaquim Nogueira e Margarida Luiza Fernandes Nogueira, sem seu apoio e ensinamentos eu jamais teria chegado t{\~{a}}o longe.
+
+   A minha namorada La{\'{i}}s Machado Bernardinelli, pelo amor, carinho, amizade e cumplicidade.
+
+   Ao Professor Mois{\'{e}}s Vidal Ribeiro, por toda orienta\c{c}{\~{a}}o, paci{\^{e}}ncia e incentivo.
+
+   Ao Professor Guilherme Ribeiro Colen, pela orienta\c{c}{\~{a}}o e apoio.
+
+   A todos amigos que contribu{\'{i}}ram de alguma forma para este trabalho. Em especial aos colegas do laborat{\'{o}}rio pelo aprendizado compartilhado e todas conversas.
+	
+\end{agradecimentos}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Epigraph.
+ \renewcommand*\epigraphname{\textbf{EPIGRAPH}}
+
+ \begin{epigrafe}
+ 	\vspace*{\fill}
+ 	\begin{flushright}
+ 		``If I have seen further it is by standing on the shoulders of Giants.'' \\
+ 		(Isaac Newton) \\
+ 	\end{flushright}
+ \end{epigrafe}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Resumo.
+\setlength{\absparsep}{18pt} 
+\begin{resumo}
+	\begin{otherlanguage*}{Portuguese}	
+Esta disserta\c{c}\~ao tem como objetivo discutir a caracteriza\c{c}\~ao estat\'istica e modelagem das respostas em frequ\^encia de canais de linhas de energia el\'etrica e de canais concatenados de rede de energia el\'etrica e sem fio (canais h\'ibridos de rede de energia el\'etrica e sem fio) compreendendo a faixa de frequ\^encia de $1.7$ at\'e $100$~MHz. A caracteriza\c{c}\~ao e modelagem baseiam-se em an\'alises estat\'isticas realizadas em conjuntos de dados constitu\'idos por estimativas de respostas em frequ\^encia de canal medidos, as quais foram adquiridas atrav\'es de uma campanha de medi\c{c}\~oes realizada em v\'arias resid\^encias brasileiras.  A este respeito, um m\'etodo aprimorado de modelagem estat\'istica \'e proposto para obten\c{c}\~ao dos modelos estat\'isticos baseados no pressuposto de que as respostas em frequ\^encia dos canais s\~ao processos aleat\'orios n\~ao correlacionados e, como consequ\^encia, as componentes de magnitude e fase dessas respostas de canal constituem dois processos aleat\'orios independentes. Ao adotar quatro crit\'erios estat\'isticos, s\~ao apresentadas as melhores distribui\c{c}\~oes estat\'isticas que modelam as fun\c{c}\~oes de magnitude e fase das estimativas de resposta em frequ\^encia dos canais. Al\'em disso, uma t\'ecnica de interpola\c{c}\~ao baseada em splines c\'ubicas \'e aplicada com o intu\'ito de oferecer formas de onda representativas dos par\^ametros das melhores distribui\c{c}\~oes estat\'isticas, no dom\'inio do tempo cont\'inuo, com um baixo n\'umero de coeficientes. Por fim, os algoritmos, utilizados para implementar o m\'etodo aprimorado de modelagem estat\'istica, s\~ao detalhados. No que se refere aos canais de rede de energia el\'etrica, a modelagem estat\'istica encontrada anteriormente na literatura pode n\~ao ser adequada para a modelagem dos canais de rede de energia el\'etrica residenciais brasileiros. Como resultado, um modelo estat\'istico para o canal de rede de energia el\'etrica residencial brasileiro \'e introduzido. Em rela\c{c}\~ao ao canal h\'ibrido de rede de energia el\'etrica e sem fio, um modelo estat\'istico \'e introduzido. 
+
+	Palavras-chave: Caracteriza\c{c}\~ao estat\'istica. Comunica\c{c}\~ao h\'ibrida. Comunica\c{c}\~ao via rede de energia el\'etrica. Comunica\c{c}\~ao sem fio. Metodologia de modelagem.
+	
+	\end{otherlanguage*}
+\end{resumo}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Abstract.
+\begin{resumo}[ABSTRACT]
+	\begin{otherlanguage*}{english}		
+This thesis aims to discuss the statistical characterization and modeling of channel frequency responses of power line channels and the series concatenation of power line and wireless channels (hybrid power line - wireless channels), comprising the frequency band from $1.7$ up to $100$~MHz. The characterization and modeling rely on statistical analyses based on data sets constituted by measured channel frequency responses estimates, which were acquired through a measurement campaign carried out in several Brazilian residences. In this regard, an enhanced statistical modeling method is proposed to obtain the statistical models based on the assumption that channel frequency responses are uncorrelated random process and, as a consequence, the magnitude and phase components of these channel frequency responses constitute two independent random processes. By adopting four statistical criteria, it is shown the best statistical distributions that models the magnitude and phase functions of channel frequency response estimates. Moreover, an interpolation technique based on cubic Splines is applied, offering representative waveform of the parameters of the best statistical distributions in the continuous-time domain with a low number of coefficients. Furthermore, the algorithms used to implement the enhanced statistical modeling method are described. Concerning to the power line channels, it is shown that the previous statistical modeling, found in the literature, may not be suitable for modeling the Brazilian in-home power line channels. As a result, an statistical model for Brazilian in-home power line channel is introduced. Regarding the hybrid power line - wireless channels, an statistical model is introduced. 
+		
+Key-words: statistical characterization, hybrid communication, power line communication, wireless communication, modeling methodology.		
+	\end{otherlanguage*}
+\end{resumo}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%ListFigures.
+\renewcommand*\figurename{Figure}
+\renewcommand*\listfigurename{\textbf{LIST OF FIGURES}}
+\pdfbookmark[0]{\listfigurename}{lof}
+\listoffigures*
+\cleardoublepage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%ListTables.
+\renewcommand\listtablename{\textbf{LIST OF TABLES}}
+\renewcommand\tablename{Table}
+\pdfbookmark[0]{\listtablename}{lot}
+\listoftables*
+\cleardoublepage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Acronyms.
+\renewcommand\listadesiglasname{\textbf{ACRONYMS}}
+\pdfbookmark[0]{\listadesiglasname}{los}
+\chapter*{\listadesiglasname}
+
+\begin{acronym}
+	\acro{HIPERLAN}{high-performance radio local area network}
+	\acro{HSRC}{hybrid single-relay channel}
+	\acro{HOHC}{hybrid one-hop channel}
+	
+	\acro{SRC}{single-relay channel}
+	\acro{2S-SRC}{two-stage SRC}
+	\acro{MIMO}{multiple-input multiple-output}
+	\acro{AF}{amplify-and-forward}
+	\acro{DF}{decode-and-forward}
+	\acro{TDMA}{time-division multiple access}
+	\acro{MRC}{maximum ratio combining}
+	\acro{LGRC}{linear Gaussian relay channel}
+	\acro{$N$-CGRC}{$N$-block circular Gaussian relay channel}
+	\acro{OFDM}{orthogonal frequency-division multiplexing}
+	
+	\acro{PSD}{power spectral density}
+	\acro{BER}{bit error rate}
+	\acro{nSNR}{normalized signal-to-noise ratio}
+	%\acroindefinite{nSNR}{an}{a}
+	
+	\acro{LTV}{linear time-variant}
+	
+	%\acroindefinite{LTI}{an}{a}
+	
+	\acro{AWGN}{additive white Gaussian noise}
+	\acro{SNR}{signal-to-noise ratio}
+	%\acroindefinite{SNR}{an}{a}
+	
+	\acro{CSI}{channel state information}
+	\acro{LAN}{Local Area Network}
+	\acro{ETSI}{European Telecommunications Standards Institute}
+	\acro{NLOS}{non-line-of-sight}
+	\acro{BRAN}{Broadband Radio Access Networks}
+	%%%%%%%%%%%%%%%%%%%%%%%
+    % Acronimos - > 27	  %
+    %%%%%%%%%%%%%%%%%%%%%%%
+    
+    \acro{AIC}{Akaike information criterion}
+    \acro{ACA}{average channel attenuation}
+    \acro{ACG}{average channel gain}
+    \acro{BIC}{Bayesian information criterion}
+    \acro{BPSK}{binary phase shift keying}
+    \acro{CFR}{channel frequency response}
+    \acro{CIR}{channel impulse responses}
+    \acro{CB}{coherence bandwidth}
+    \acro{CT}{coherence time}
+	\acro{CP}{cyclic prefix}
+    \acro{DFT}{discrete Fourier transform}
+    \acro{EDC}{Efficient determination criterion}
+    \acro{FM}{frequency modulation}
+    \acro{HS-OFDM}{hermitian-symmetric orthogonal frequency-division multiplexing}
+    \acro{HiperLAN}{High Performance Radio LAN}
+    \acro{IoT}{Internet of Things}
+    \acro{IFT}{inverse Fourier transform}
+	\acro{LPTV}{linear periodically time varying}
+    \acro{LTI}{linear time-invariant}
+    \acro{LPWAN}{Low Power Wide Area Networks}
+    \acro{MLE}{Maximum Likelihood Estimation}
+    \acro{MSE}{mean squared error}
+    \acro{PLC}{power line communication}
+    \acro{RF}{radio frequency}
+    \acro{r.va.}{random variable}
+    \acro{r.v.}{random vector}
+    \acro{RMSE}{root-mean-square error}
+    \acro{RMS-DS}{root mean squared delay spread}
+	\acro{SFO}{sampling-frequency offset}
+    \acro{SG}{smart grid}
+    \acro{UWB}{Ultra-wide-band}
+	\acro{WLC}{wireless communication} 
+	\acro{WLAN}{wireless local area network}
+	
+	
+	
+	
+%	\acro{2S-SRC}{two-stage single-relay channel}
+%	\acro{AWGN}{additive white Gaussian noise}
+%	\acro{AF}{amplify-and-forward}
+%	\acro{BER}{bit error rate}
+%	\acro{CFR}{channel frequency response}
+%	\acro{CIR}{channel impulse response}
+%	\acro{CSI}{channel state information}
+%	\acro{DF}{decode-and-forward}
+%	\acro{DFT}{discrete Fourier transform}
+%    \acro{HIPERLAN}{high-performance radio local area network}
+%	\acro{HS-OFDM}{hermitian-symmetric orthogonal frequency-division multiplexing}
+%    \acro{HSRC}{hybrid single-relay channel}
+%	\acro{HOHC}{hybrid one-hop channel}
+%	\acro{LGRC}{linear Gaussian relay channel}
+%	\acro{LTI}{linear time-invariant}
+%	\acro{LTV}{linear time-variant}
+%	\acro{MIMO}{multiple-input multiple-output}
+%	\acro{MRC}{maximum ratio combining}
+%	\acro{nSNR}{normalized signal-to-noise ratio}
+%	\acro{$N$-CGRC}{$N$-block circular Gaussian relay channel}
+%	\acro{OFDM}{orthogonal frequency-division multiplexing}
+%	\acro{PLC}{power line communication}
+%	\acro{PSD}{power spectral density}
+%	\acro{SNR}{signal-to-noise ratio}
+%	\acro{SRC}{single-relay channel}
+%	\acro{TDMA}{time-division multiple access}
+%	
+%	\acro{ACG}{average channel gain}
+%	\acro{CB}{coherence bandwidth}
+%	\acro{ACA}{average channel attenuation}
+%	\acro{RMS-DS}{root mean squared delay spread}
+%	\acro{CT}{coherence time}
+%	\acro{DFT}{discrete Fourier transform}
+%	\acro{BPSK}{binary phase shift keying}
+%	\acro{r.va.}{random variables}
+%	\acro{CP}{cyclic prefix}
+%	\acro{SFO}{sampling-frequency offset}
+%	\acro{MLE}{Maximum Likelihood Estimation}
+%	\acro{AIC}{Akaike information criterion}
+%	\acro{BIC}{Bayesian information criterion}
+%	\acro{EDC}{Efficient determination criterion}
+%	\acro{LPTV}{linear periodically time varying}
+%	\acro{IFT}{inverse Fourier transform}
+%	\acro{r.v.}{random vector}
+\end{acronym}
+\newpage
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% List of Symbols
+% \renewcommand*\listadesimbolosname{\textbf{LIST OF SYMBOLS}}
+% \begin{simbolos}
+%   \item[$ \forall $] For all
+%   \item[$ \in $] Pertence
+%   \item[$ \odot $] Hadamart product
+%   \item[$ \dagger $] Conjugate transpose operator
+%   \item[$ \mathbb{E}\{\cdot\} $] expectation operator
+%   \item[$ \text{Tr}(\cdot) $] Trace operator
+%   \item[$ h(\cdot) $] Entropy operator
+%   \item[$ ||\cdot|| $] 2-norm operator
+%   \item[$ \diag\{\mathbf{a}\} $] Diagonal matrix
+%   \item[$ \mathbf{R}_{\mathbf{MM}} $] Autocorrelation matrix
+% \end{simbolos}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%Contents.
+\renewcommand*\contentsname{\textbf{CONTENTS}}
+\pdfbookmark[0]{\contentsname}{toc}
+\tableofcontents*
+\cleardoublepage

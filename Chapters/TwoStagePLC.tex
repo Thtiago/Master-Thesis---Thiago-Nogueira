@@ -1,0 +1,195 @@
+\chapter{2} \label{TwoStagePLC}
+
+Several works have discussed the gains associated with the use of cooperative communication for improving the performance of in-home narrowband and broadband \ac{PLC} systems \cite{Rubin2016,Dubey2015,Michelle2016}. The majority of them adopt well-known channel models in which \ac{PLC} channels are random process \cite{Rabie2016, Dubey2015, Dubey062015}. A worthy remark regarding these \ac{PLC} channel models is the fact that they consider frequency-domain representations in which the \ac{PLC} channel is either flat or an stationary random process. Nevertheless, surveys on electric power grid measurements have shown that an extensive investigation has to be worldwide carried out to come up with representative \ac{PLC} channel models. Trying to exploit this issue, \cite{Michelle2016} analyzed the cooperative communication adopting a data set constituted by several \ac{PLC} channel estimates and additive noise measurements, which were obtained from a measurement campaign carried out in several Brazilian residences. Based on this data set, \cite{Michelle2016} discussed the suitability of the \ac{SRC} model for in-home broadband data communication by addressing distances between source and destination nodes that cover up to one-hop links; however, the data set has shown that data communication covering up two-hop links has to be addressed since they cover distances in which the signal attenuation through in-home electric circuits is relevant.
+
+In this regard, this chapter investigates the \ac{2S-SRC} model and compares its ergodic achievable data rate against the ones from others cooperative channel models discussed in the literature for in-home broadband \ac{PLC} systems. A formulation of the \ac{2S-SRC} model regarding in-home PLC system covering the frequency band from $1.7$ up to $100$~MHz is presented. Similar to \cite{Michelle2016}, \cite{Goldsmith2001, Choudhuri2014} are used to derive the ergodic achievable data rates of five configurations of the \ac{2S-SRC} model as it allows to precisely take into account the frequency selectivity of \ac{PLC} channels and the nonwhiteness of the additive noise in electric power grids.
+
+This chapter is organized as follows: Section \ref{sec:ProbForm_2S_SRC} outlines the problem formulation, describing the cooperative channel models adopted in this chapter. In the sequel, Section \ref{sec:EADR_2S_SRC} derives their ergodic achievable data rates, assuming \ac{AF} or \ac{DF} protocol at the relay node, as well as \ac{MRC} technique to combine the signals at the destination node. Section \ref{sec:SUM_2S_SRC} addresses a brief summary on this chapter.
+
+\section{PROBLEM FORMULATION} \label{sec:ProbForm_2S_SRC}
+
+The \ac{2S-SRC} model, shown in Fig. \ref{fig:srcsrc}, is constituted by five nodes: one source node ($S$); three relay nodes ($R_{a}$, $R_{b}$, and $R_{c}$); and one destination node ($D$). From this model, active (perform data transmission) and inactive (receive data) relays between source and destination nodes define eight distinct configurations. However, discussing all possible configurations would be rather confusing, as a large number of configurations and active relays are possible. Then, this chapter focuses on the \ac{2S-SRC} model, considering configurations with at most one active relay, as they are the most studied in the literature. Therefore, the investigated configurations, which are shown in Fig. \ref{fig:configurations}, are described as follows:
+
+\begin{figure}
+	\centering
+	\psfrag{HSD1}[l][l][0.9]{$ h_{SR_{b}}[n] $}
+	\psfrag{HSD2}[l][l][0.9]{$ h_{R_{b}D}[n] $}
+	\psfrag{HSR1}[l][l][0.9]{$ h_{SR_{a}}[n] $}
+	\psfrag{HSR2}[l][l][0.9]{$ h_{R_{b}R_{c}}[n] $}
+	\psfrag{HRD1}[l][l][0.9]{$ h_{R_{a}R_{b}}[n] $}
+	\psfrag{HRD2}[l][l][0.9]{$ h_{R_{b}D}[n] $}
+	
+	\psfrag{S}[l][l][0.9]{\color{white} $S$}
+	\psfrag{RA}[l][l][0.9]{\color{white} $R_{a}$}
+	\psfrag{RB}[l][l][0.9]{\color{white} $R_{b}$}
+	\psfrag{RC}[l][l][0.9]{\color{white} $R_{c}$}
+	\psfrag{D}[l][l][0.9]{\color{white} $D$}
+	\includegraphics[scale=0.9]{SRC_SRC}
+	\caption{Two-stage single-relay channel model during one symbol time duration.}
+	\label{fig:srcsrc}
+\end{figure}
+
+\begin{itemize}
+	\item Configuration $A$: it is the one-hop channel model or the direct link. In this configuration all relays are inactive.
+	\item Configuration $B$: it is the two-hop channel model \cite{Rabie2016}. It assumes that $R_b$ node is active, while $R_a$ and $R_c$ nodes are inactive.
+	\item Configuration $C$: it is the \ac{SRC} model \cite{Michelle2016}. Basically, $R_a$ node is active, while $R_b$ and $R_c$ nodes are inactive.
+	\item Configuration $D$: it is the \ac{SRC} model \cite{Michelle2016}. Essentially, $R_c$ node is active, while $R_a$ and $R_b$ nodes are inactive.
+	\item Configuration $E$: it is the \ac{2S-SRC} model, in which all relays are active.
+\end{itemize}
+
+\begin{figure}[h]
+	\centering
+	\psfrag{confa}[l][l][0.8]{Conf. $A$}
+	\psfrag{confb}[l][l][0.8]{Conf. $B$}
+	\psfrag{confc}[l][l][0.8]{Conf. $C$}
+	\psfrag{confd}[l][l][0.8]{Conf. $D$}
+	\psfrag{confe}[l][l][0.8]{Conf. $E$}
+	\includegraphics[scale=0.65]{Configuration}
+	\caption{Adopted configurations from the 2S-SRC model.}
+	\label{fig:configurations}
+\end{figure}
+
+To mathematically formulate the \ac{2S-SRC} model and its configurations, $T_{C} \gg T_{S}$, where $ T_{C} $ denotes the coherence time of the \ac{PLC} channel and $ T_{S} $ is the symbol time interval. Moreover, the \ac{TDMA} method is used to access the channel. Then, each transmitter node (source and active relays) has one time slot from a total of $N_{T}$ time slots, with $N_{T} \in \mathbb{N}^* $ being defined as the number of transmitters in the analyzed configuration, to send information. Also, $S$ and $R_b$ nodes take advantage of the broadcasting characteristic of electric power grids; however, due to the high attenuation of some channels, $R_c$ and $D$ nodes disregard all information received before $R_b$ node performs its data transmission in the case $R_b$ node is active (configurations $B$ and $E$). For instance, in configuration $E$, $S$ node broadcasts the original information to $R_{a}$ and $R_{b}$ nodes during the first time slot. In the following time slot, $R_{a}$ node forwards the information to $R_{b}$ node. In the third time slot, $R_{b}$ node broadcasts the information to $R_{c}$ and $D$ nodes. At last, in the fourth time slot, $R_{c}$ node sends the information to $D$ node.
+
+Now, let the \ac{PLC} channels be \ac{LTI} within a symbol time duration and the \ac{CIR} be represented by $\{h_{ij}[n]\}_{n=1}^{L_{ij}}$, in which $ L_{ij} $ is the length of the channel $ \{h_{ij}[n]\} $, $ i \in \{S,R_{a},R_{b},R_{c}\}$ denotes the transmitter node and $ j \in \{R_{a},R_{b},R_{c},D\}$ denotes the receiver node. To be algebraically manipulated, the \ac{CIR}s are represented as $ \mathbf{h}_{ij} = [h_{ij}[1]\  h_{ij}[2]\ ...\ h_{ij}[L_{ij}]]^T $. Also, the $ N\text{-length} $ vector that represents the \ac{CFR} associated with $ \mathbf{h}_{ij} $ is expressed as
+\begin{equation}
+	\mathbf{H}_{ij} = \mathbf{W}_{N}  \begin{bmatrix} \mathbf{I}_{L_{ij}} \\ \mathbf{0}_{(N-L_{ij})\times N} \end{bmatrix} \mathbf{h}_{ij},
+\end{equation}
+where $\mathbf{W}_{N} \in \mathbb{C}^{N\times N}$ denotes the \textit{N}-size \ac{DFT} matrix, $ \mathbf{I}_{L} \in \mathbb{R}^{L\times L}$ denotes an $L$-size identity matrix and $ \mathbf{0}_{L\times Q} $ is a $ L \times Q $ null matrix. Additionally, define the diagonal matrices $ \mathbf{\Lambda}_{\mathbf{H}_{ij}} \triangleq \diag \{H_{ij}[1], H_{ij}[1],...,H_{ij}[N]\} $ and $ \mathbf{\Lambda}_{|\mathbf{H}_{ij}|^2} \triangleq \mathbf{\Lambda}_{\mathbf{H}_{ij}} \mathbf{\Lambda}_{\mathbf{H}_{ij}}^\dagger $, in which $ H_{ij}[k] $ is the $k$-th element of $ \mathbf{H}_{ij} $, $ \forall \ k \in \{1,2,...,N\} $, and $\dagger$ denotes the conjugate transpose operator.
+
+Let $\mathbf{X} \in \mathbb{C}^{N \times 1}$ and $ \mathbf{V}_{ij} \in \mathbb{C}^{N \times 1}$ be random vectors that represent, in the frequency domain, the symbol transmitted by S node and the additive noise at the output of the channel associated with $i$ and $j$ nodes. Next, given that $\mathbb{E}\{\cdot\}$ denotes the expectation operator, it is assumed that $ \mathbb{E}\{\mathbf{X}\} =  \mathbf{0}_{1\times N}  $,  $ \mathbf{R}_{\mathbf{X}\mathbf{X}} = \mathbb{E}\{\mathbf{X}\mathbf{X}^\dagger\} = N \mathbf{I}_{N} $, in which $\mathbf{R}_{\mathbf{MM}}$ represents the autocorrelation matrix of a finite-length random vector $\mathbf{M}$. Also, $ \mathbb{E}\{\mathbf{V}_{ij}\} = \mathbf{0} $, and $ \mathbb{E}\{\mathbf{V}_{ij}\odot\mathbf{V}_{pq}\} = \mathbb{E}\{\mathbf{V}_{ij}\} \odot \mathbb{E}\{\mathbf{V}_{pq}\} $, $ \forall ij \neq pq $, where $\odot$ denotes the Hadamard product. It is also considered that $ \mathbb{E}\{\mathbf{V}_{ij}\mathbf{V}_{ij}^\dagger\} = N \mat{\Lambda}_{P_{\mathbf{V}_{ij}}}$, in which  $\mat{\Lambda}_{P_{\mathbf{V}_{ij}}} \triangleq \diag\{P_{\mathbf{V}_{ij}}[1],P_{\mathbf{V}_{ij}}[2],...,P_{\mathbf{V}_{ij}}[N]\} $ and $ P_{\mathbf{V}_{ij}}[k] $ denotes the power of the $k$-th element of $\mathbf{V}_{ij}$, $ \forall \ k \in \{1,2,...,N\} $. Following, let $ P_{S} \geq 0 $, $ P_{R_{a}} \geq 0  $, $ P_{R_{b}} \geq 0  $, and $ P_{R_{c}} \geq 0  $ be the transmission powers allocated to $S$, $R_{a}$, $R_{b}$, and $R_{c}$ nodes, respectively. The sum power constraint criterion is satisfied as follows:
+\begin{equation}
+\sum_{i} P_{i} \leq P,
+\end{equation}
+in which $P \geq 0$ is the total transmission power. Next, $ \mat{\Lambda}_{\sqrt{P_{i}}} \triangleq \diag\{\sqrt{P_{i}[1]},\sqrt{P_{i}[2]},...,\sqrt{P_{i}[N]}\}$ and $ \mat{\Lambda}_{P_{i}} \triangleq \diag\{P_{i}[1],P_{i}[2],...,P_{i}[N]\}$, where $ P_{i}[k] \geq 0 $ is the power allocated to the $k$-th subchannel at $i$-th node, $ \forall \ k \in \{1,2,...,N\} $.
+
+Given the sum power constraint criterion and the \ac{TDMA} method, the following research questions emerge: ``What kind of improvement can the \ac{2S-SRC} model offer when the distance between edge nodes within a home corresponds to data communication links with up to two hops?'', ``What kind of configuration can achieve the highest ergodic achievable data rate?'' For answering these questions, Section~\ref{sec:EADR_2S_SRC} derives ergodic achievable data rate expressions for each configuration based on the aforementioned formulation.
+
+\section{ERGODIC ACHIEVABLE DATA RATE} \label{sec:EADR_2S_SRC}
+
+This section outlines expressions for the ergodic achievable data rate of the five aforementioned configurations using \ac{AF} or \ac{DF} at the relay node together with \ac{MRC} at the destination node. To do so, every configuration is modeled as a \ac{LGRC} \cite{Goldsmith2001} with finite memory $ L_{\text{max}} \in \mathbb{N}| L_{\text{max}} \geq \max\limits_{i,j} \{L_{ij}\}$. However, in \ac{PLC} environment, noise is colored and \ac{CIR}s have memory, which results in inter-block interference and, as a consequence, the evaluation of the achievable data rate for a \ac{LGRC} model is very difficult. To overcome this problem, a recourse to \ac{$N$-CGRC} \cite{Choudhuri2014}, which eliminates the inter-block interference for $ N \geq L_{\text{max}} $, is recommended. Note that the achievable data rate associated with \ac{LGRC} tends to be equal to that for \ac{$N$-CGRC} as $ N \rightarrow \infty $. Moreover, perfect symbol synchronization at the receiver side and complete \ac{CSI} at both transmitter and receiver sides applies. The adoption of complete \ac{CSI} allows the use of water-filling technique for maximizing the data rate associated with each channel model.
+
+\subsection{\textbf{Configuration $A$}}\label{subsec:confa}
+
+Let
+\begin{equation}
+	\mathbf{Y}_{D} = \mat{\Lambda}_{\sqrt{P_{S}}} \mathbf{\Lambda}_{\mathbf{H}_{SD}} \mathbf{X}+ \mathbf{V}_{SD}
+\end{equation}
+be a complex random vector that models the received symbol at $D$ node in the frequency domain. Also, $\mathbf{X}$ and $\mathbf{V}_{SD}$ are Gaussian random vectors. According to \cite{Cover2006}, the mutual information between transmitted and received symbols is expressed as
+
+\begin{eqnarray}
+	I(\mathbf{X};\mathbf{Y}_D) & = & h(\mathbf{Y}_D)-h(\mathbf{Y}_D|\mathbf{X})\nonumber\\
+	& = & h(\mathbf{Y}_D) - h(\mat{\Lambda}_{\sqrt{P_{S}}} \mathbf{\Lambda}_{\mathbf{H}_{SD}} \mathbf{X} |\mathbf{X}) - h(\mathbf{V}_{SD}|\mathbf{X})\nonumber \\
+	& = & h(\mathbf{Y}_{D})-h(\mathbf{V}_{SD}),
+\end{eqnarray}
+where $ h(\cdot) $ denotes the entropy operator over a random vector and $h(\mat{\Lambda}_{\sqrt{P_{S}}} \mathbf{\Lambda}_{\mathbf{H}_{SD}} \mathbf{X} |\mathbf{X}) = 0$. In addition, the entropy of $\mathbf{Y}_{D}$ and $\mathbf{V}_{SD}$ are, respectively, given by
+\begin{equation}
+	h(\mathbf{Y}_{D}) = \log_{2}[(\pi e)^{N} \text{det}(\mathbf{R}_{\mathbf{Y}_{D}\mathbf{Y}_{D}})]
+\end{equation}
+and
+\begin{equation}
+	h(\mathbf{V}_{SD}) = \log_{2}[(\pi e)^{N} \text{det} (\mathbf{R}_{\mathbf{V}_{SD}\mathbf{V}_{SD}})].
+\end{equation}
+Therefore, the mutual information is expressed as 
+\begin{equation}
+	I(\mathbf{X};\mathbf{Y}_D) = \log_{2} [\text{det}(\mathbf{I}_{N}+ \mat{\Lambda}_{\gamma_{SD}})],
+\end{equation}
+in which $ \mat{\Lambda}_{\gamma_{ij}} = \mat{\Lambda}_{P_{i}} \mathbf{\Lambda}_{|\mathbf{H}_{ij}|^2} / \mat{\Lambda}_{P_{\mathbf{V}_{ij}}} $ is the \ac{SNR} matrix associated with the channel between $i$ and $j$ nodes.
+
+As the mutual information is maximized when $\mathbf{X}$ is a Gaussian random vector, the ergodic achievable data rate for configuration $A$ is given by
+\begin{equation}
+	C_{A} = \mathbb{E}_{\mathbf{H}}\left\{\max_{\mat{\Lambda}_{P_{i}}} \dfrac{B_{w}}{N \, N_{T}} \log_{2} [\text{det}(\mathbf{I}_{N}+ \mat{\Lambda}_{\gamma_{SD}} )]\right\},
+\end{equation}
+subject to $ \sum\limits_{i} \ \text{Tr}(\mat{\Lambda}_{P_{i}}) \leq P $, with $i \in \{S\}$ and $ N_T = 1 $. Note that $ \mathbb{E}_{\mathbf{H}}\{\cdot\} $ denotes the expectation operator in relation to the \ac{CIR}s that constitute the current configuration, $\text{Tr}(\cdot)$ denotes the trace operator, and $ B_w $ is the frequency bandwidth.
+
+\subsection{\textbf{Configuration $B$}}\label{subsec:confb}
+
+In this configuration, the complex random vector $ \mathbf{Y}_{R_b} = \mat{\Lambda}_{\sqrt{P_{S}}} \mathbf{\Lambda}_{\mathbf{H}_{SR_b}} \mathbf{X} + \mathbf{V}_{SR_b} $ models the symbol received by $R_{b}$ node in the frequency domain. Adopting \ac{AF}, the received symbol at $D$ node is expressed as
+\begin{eqnarray}
+	\mathbf{Y}_{D} & = & \mat{\Lambda}_{\sqrt{P_{R_b}}} \mat{\Lambda}_{P_{\mathbf{Y}_{R_{b}}}}^{-1/2} \mathbf{\Lambda}_{\mathbf{H}_{R_{b}D}} \mathbf{Y}_{R_{b}} + \mathbf{V}_{R_{b}D}\nonumber\\
+	& = & \mathbf{A} \mathbf{X} + \mathbf{B}\mathbf{V},
+\end{eqnarray}
+in which 
+\begin{equation}
+	\mathbf{A} =  \mat{\Lambda}_{\sqrt{P_{S}}} \mat{\Lambda}_{\sqrt{P_{R_{b}}}} \mat{\Lambda}_{P_{\mathbf{Y}_{R_{b}}}}^{-1/2} \mathbf{\Lambda}_{\mathbf{H}_{SR{b}}} \mathbf{\Lambda}_{\mathbf{H}_{R_{b}D}},
+\end{equation}
+\begin{equation}
+	\mathbf{B} = [\mat{\Lambda}_{\sqrt{P_{R_{b}}}} \mat{\Lambda}_{P_{\mathbf{Y}_{R_{b}}}}^{-1/2} \mathbf{\Lambda}_{\mathbf{H}_{R_{b}D}} \ \ \ \mathbf{I}_{N}],
+\end{equation}
+\begin{equation}
+	\mathbf{V} = [\mathbf{V}_{SR_{b}}^T \mathbf{V}_{R_{b}D}^T]^T ,
+\end{equation}
+and $ \mat{\Lambda}_{P_{\mathbf{Y}_{R_{b}}}} = \mat{\Lambda}_{P_{S}} \mathbf{\Lambda}_{|\mathbf{H}_{SR_b}|^2} + \mat{\Lambda}_{P_{\mathbf{V}_{SR_{b}}}} $ is the power vector associated with $ \mathbf{Y}_{R_{b}} $. As a result, the \ac{SNR} matrix associated with the use of the \ac{AF} protocol is given by
+
+\begin{eqnarray}
+	\mat{\Lambda}_{\gamma_{B,AF}} & \triangleq & \mathbb{E}\{\mathbf{A}\mathbf{X}(\mathbf{A}\mathbf{X})^\dagger\} (\mathbb{E}\{\mathbf{B}\mathbf{V}(\mathbf{B}\mathbf{V})^\dagger\})^{-1} \\
+	& = & \mathbf{A} \mathbf{R}_{\mathbf{X}\mathbf{X}} \mathbf{A}^\dagger(\mathbf{B} \mathbf{R}_{\mathbf{V}\mathbf{V}} \mathbf{B}^\dagger)^{-1} \nonumber\\
+	& = & \frac{\mat{\Lambda}_{P_{S}} \mat{\Lambda}_{P_{R_{b}}} \mat{\Lambda}_{P_{\mathbf{Y}_{R_{b}}}}^{-1} \mathbf{\Lambda}_{|\mathbf{H}_{SR_b}|^2} \mathbf{\Lambda}_{|\mathbf{H}_{R_{b}D}|^2}}
+	{\mat{\Lambda}_{P_{R_{b}}} \mat{\Lambda}_{P_{\mathbf{Y}_{R_{b}}}}^{-1} \mathbf{\Lambda}_{|\mathbf{H}_{R_{b}D}|^2} \mat{\Lambda}_{P_{\mathbf{V}_{SR_{b}}}} + \mat{\Lambda}_{P_{\mathbf{V}_{R_{b}D}}}}.
+\end{eqnarray}
+Similarly to configuration $A$, the mutual information is given by
+\begin{equation}
+	I(\mathbf{X};\mathbf{Y}_{D}) = \log_{2} [\text{det}(\mathbf{I}_{N}+ \mat{\Lambda}_{\gamma_{B,AF}})].
+\end{equation}
+Consequently, the ergodic achievable data rate for configuration $B$ using the \ac{AF} protocol can be expressed as
+\begin{equation}\label{eq:cbaf}
+	C_{B,AF} = \mathbb{E}_{\mathbf{H}}\left\{\max_{\mat{\Lambda}_{P_{i}}} \dfrac{B_{w}}{N \, N_{T}} \log_{2} [\text{det}(\mathbf{I}_{N}+ \mat{\Lambda}_{\gamma_{B,AF}})]\right\},
+\end{equation}
+subject to $ \sum\limits_{i} \ \text{Tr}(\mat{\Lambda}_{P_{i}}) \leq P $, with $i \in \{S,R_b\}$ and $ N_T = 2 $.
+
+Considering the maximum flow-minimum cut theorem \cite{Ford1962} and assuming that $R_{b}$ node is error-free, the ergodic achievable data rate for configuration $B$ adopting \ac{DF} is given by
+
+\begin{equation}
+	C_{B,DF} = \mathbb{E}_{\mathbf{H}}\left\{\min\{C_{SR_{b}},C_{R_{b}D}\}\right\},
+\end{equation}
+where
+\begin{equation}
+	C_{ij} = \max_{\mat{\Lambda}_{P_{i}}} \dfrac{B_{w}}{N \, N_{T}} \log_{2} [\text{det}(\mathbf{I}_{N}+ \mat{\Lambda}_{\gamma_{ij}})],
+\end{equation}
+subject to $ \sum\limits_{i} \ \text{Tr}(\mat{\Lambda}_{P_{i}}) \leq P $, with $i \in \{S,R_b\}$ and $ N_T = 2 $.
+
+\subsection{\textbf{Configurations $C$ and $D$}}\label{subsec:confc&d}
+
+Based on the fact that configurations $C$ and $D$ are \ac{SRC} models \cite{Michelle2016}, the functions $ f_{AF}(\cdot) $ and $ f_{DF}(\cdot) $ evaluate the achievable data rate of a \ac{SRC} model using \ac{AF} and \ac{DF}, respectively (see Appendix \ref{ap:a}). Therefore, the ergodic achievable data rate for configurations $C$ and $D$ can be expressed as
+\begin{equation}\label{eq:confcaf}
+	C_{C,AF} = \mathbb{E}_{\mathbf{H}} \left\{ f_{AF}(\mathcal{I}_{SD},\mathcal{I}_{SR_{a}},\mathcal{I}_{R_{a}D})\right\},
+\end{equation}
+
+\begin{equation}\label{eq:confcdf}
+	C_{C,DF} = \mathbb{E}_{\mathbf{H}} \left\{ f_{DF}(\mathcal{I}_{SD},\mathcal{I}_{SR_{a}},\mathcal{I}_{R_{a}D})\right\},
+\end{equation}
+
+\begin{equation}\label{eq:confdaf}
+	C_{D,AF} = \mathbb{E}_{\mathbf{H}} \left\{ f_{AF}(\mathcal{I}_{SD},\mathcal{I}_{SR_{c}},\mathcal{I}_{R_{c}D})\right\},
+\end{equation}
+and
+\begin{equation}\label{eq:confddf}
+	C_{D,DF} = \mathbb{E}_{\mathbf{H}} \left\{ f_{DF}(\mathcal{I}_{SD},\mathcal{I}_{SR_{c}},\mathcal{I}_{R_{c}D})\right\},
+\end{equation}
+in which $ \mathcal{I}_{ij} $ may denote $\mat{\Lambda}_{P_{i}}$, $\mat{\Lambda}_{|\mathbf{H}_{ij}|^2}$ and $\mat{\Lambda}_{P_{\mathbf{V}_{ij}}} $, in accord with the chosen configuration and cooperative protocol.
+
+\subsection{\textbf{Configuration $E$}}\label{subsec:confe}
+
+The mutual information between transmitted and received symbols in configuration $E$ using \ac{AF} is as follows:
+
+\begin{equation}
+I(\mathbf{X};\mathbf{Y}_{D}) = \log_{2} [\text{det}(\mathbf{I}_{N}+ \mat{\Lambda}_{\gamma_{E,AF}})],
+\end{equation}
+where $\mat{\Lambda}_{\gamma_{E,AF}}$ is deduced in Appendix \ref{ap:b}. Thus, the ergodic achievable data rate for configuration $E$ using \ac{AF} is given by 
+\begin{equation}\label{eq:ceaf}
+C_{E,AF} = \mathbb{E}_{\mathbf{H}} \left\{\max_{\mat{\Lambda}_{P_{i}}} \dfrac{B_{w}}{N \, N_{T}} \log_{2} [\text{det}(\mathbf{I}_{N} + \mat{\Lambda}_{\gamma_{E,AF}})]\right\},
+\end{equation}
+subject to $ \sum\limits_{i} \ \text{Tr}(\mat{\Lambda}_{P_{i}}) \leq P $, with $i \in \{S,R_a,R_b,R_c\}$ and $ N_T = 4 $.
+
+Also, according to the maximum flow-minimum cut theorem and assuming that the relays are error-free, as in configuration $B$, the ergodic achievable data rate for configuration $E$ using \ac{DF} is expressed as
+\begin{equation}
+	C_{E,DF} = \mathbb{E}_{\mathbf{H}} \{ \frac{1}{2} \min\{f_{DF}(\mathcal{I}_{SR_{b}},\mathcal{I}_{SR_{a}},\mathcal{I}_{R_{a}R_{b}}),
+	f_{DF}(\mathcal{I}_{R_{b}D},\mathcal{I}_{R_{b}R_{c}},\mathcal{I}_{R_{c}D})\}\},
+\end{equation}
+in which the term $ \frac{1}{2} $ is justified by the presence of two stages, as each one of them uses the channel during half of the available time interval.
+
+\section{SUMMARY} \label{sec:SUM_2S_SRC}
+
+This chapter has focused on the \ac{2S-SRC} model and some of the most discussed cooperative channel models in the literature for improving the \ac{PLC} system performance. Thus, the problem formulation addressing five configurations has been presented as well as their ergodic achievable data rate expressions for both \ac{AF} and \ac{DF} cooperative protocols under the sum power constraint criterion and assuming the \ac{TDMA} method to access the channel. \ac{MRC} is used to signal combining.
+
+
